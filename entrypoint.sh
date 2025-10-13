@@ -1,32 +1,27 @@
 #!/usr/bin/env bash
 set -e
 
-# wait for possible services if you add DB later (currently using sqlite)
 echo "Running migrations..."
 python manage.py migrate --noinput
 
 echo "Collecting static files..."
 python manage.py collectstatic --noinput --clear
 
-# Create admin user 'sherif' with provided password if it doesn't exist.
-# NOTE: password is stored in the image logs if you build/run; keep that in mind.
+# Create default superuser if it doesn't exist
 echo "Ensuring admin user 'sherif' exists..."
-python - <<'PY'
-import os
-import django
+python <<'PY'
+import os, django
 os.environ.setdefault('DJANGO_SETTINGS_MODULE','noma.settings')
 django.setup()
 from django.contrib.auth import get_user_model
 User = get_user_model()
-username = "sherif"
-password = "super admin #codebase"
-email = "sherif@example.com"
+username, password, email = "sherif", "superadmin100", "sherif@example.com"
 if not User.objects.filter(username=username).exists():
     User.objects.create_superuser(username=username, email=email, password=password)
-    print("Created superuser:", username)
+    print(f"Created superuser: {username}")
 else:
-    print("Superuser already exists:", username)
+    print(f"Superuser '{username}' already exists")
 PY
 
-echo "Starting gunicorn..."
-gunicorn noma.wsgi:application --bind 0.0.0.0:8000 --workers 3
+echo "Starting Gunicorn..."
+exec gunicorn noma.wsgi:application --bind 0.0.0.0:8000 --workers 3

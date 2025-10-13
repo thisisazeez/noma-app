@@ -3,6 +3,8 @@ version: "3.8"
 services:
   web:
     build: .
+    container_name: noma_web
+    command: gunicorn noma.wsgi:application --bind 0.0.0.0:8000 --workers 3
     volumes:
       - .:/code:rw
       - static_volume:/code/staticfiles
@@ -12,7 +14,19 @@ services:
     environment:
       - DJANGO_SETTINGS_MODULE=noma.settings
       - PYTHONUNBUFFERED=1
-    # entrypoint handles migrations, superuser creation and starting gunicorn
+    restart: unless-stopped
+
+  nginx:
+    image: nginx:latest
+    container_name: noma_nginx
+    ports:
+      - "80:80"
+    volumes:
+      - ./nginx/nginx.conf:/etc/nginx/conf.d/default.conf
+      - static_volume:/code/staticfiles
+      - media_volume:/code/media
+    depends_on:
+      - web
     restart: unless-stopped
 
 volumes:
