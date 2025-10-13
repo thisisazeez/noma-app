@@ -1,0 +1,59 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Our Team - NOMA Farms{% endblock title %}
+
+{% block content %}
+
+<br>
+    <!-- Team -->
+    <section class="team overflow-hidden">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="pq-section-title text-center wow fadeInUp">
+                        <div class="pq-title">
+                            <div class="pq-title-sub-title justify-content-center">
+                                <img src="{% static 'image/section-image/group_1727.png' %}" alt="image">
+                                <!-- <span>TEAM MEMBER</span> -->
+                            </div>
+                            <h5 class="pq-title-hadding">Meet Our <span>Team</span></h5>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-12">
+                    <div class="owl-carousel owl-loaded owl-drag" data-dots="false" data-nav="false" data-desk_num="1"
+                        data-lap_num="1" data-tab_num="1" data-mob_num="1" data-mob_sm="1" data-autoplay="false"
+                        data-loop="true" data-margin="30">
+                        {% comment %} Render team members from the OurTeam model {% endcomment %}
+                        {% if team_members %}
+                            {% for member in team_members %}
+                                <div class="item">
+                                    <div class="pq-team-box pq-team-style-1 text-center">
+                                        <div class="pq-team-img">
+                                            {% if member.image %}
+                                                <img src="{{ member.image.url }}" alt="{{ member.name }}" style="width:220px;height:220px;object-fit:cover;border-radius:50%;">
+                                            {% else %}
+                                                <img src="{% static 'image/placeholder.png' %}" alt="{{ member.name }}" style="width:220px;height:220px;object-fit:cover;border-radius:50%;">
+                                            {% endif %}
+                                        </div>
+                                        <div class="pq-team-info">
+                                            <h5>{{ member.name }}</h5>
+                                            <p class="pq-subtitle">{{ member.position }}</p>
+                                            {% if member.description %}
+                                                <p>{{ member.description }}</p>
+                                            {% endif %}
+                                        </div>
+                                    </div>
+                                </div>
+                            {% endfor %}
+                        {% else %}
+                            <div class="item"><p>No team members available.</p></div>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock content %}

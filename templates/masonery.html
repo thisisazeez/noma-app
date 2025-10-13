@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}About Us - Noma - Produce Marketing Company{% endblock %}
+{% block content %}
+
+<br>
+<section class="three-column-gallery">
+  <div class="container">
+    <div class="row">
+
+      {% for item in gallery_items %}
+      <div class="col-lg-4 col-md-6 mb-4">
+        <div class="pq-portfoliobox-1">
+          <div class="pq-portfolio-img" style="height: 300px; overflow: hidden;">
+            {% comment %}
+            Detect file type: if the file ends with a video extension, show a <video>,
+            otherwise show an <img>
+            {% endcomment %}
+            {% if item.is_video %}
+              <a href="{{ item.file.url }}" target="_blank">
+                <video controls class="img-fluid"
+                       style="height: 100%; width: 100%; object-fit: cover;">
+                  <source src="{{ item.file.url }}" type="video/mp4">
+                  Your browser doesn't support video.
+                </video>
+              </a>
+            {% else %}
+              <a href="{{ item.file.url }}" target="_blank">
+                <img src="{{ item.file.url }}" alt="{{ item.title }}" class="img-fluid"
+                     style="height: 100%; width: 100%; object-fit: cover;">
+              </a>
+            {% endif %}
+          </div>
+        </div>
+      </div>
+      {% empty %}
+      <p class="text-center">No gallery items yet.</p>
+      {% endfor %}
+
+    </div>
+  </div>
+</section>
+
+
+{% endblock content %}

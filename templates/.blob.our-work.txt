@@ -1,0 +1,92 @@
+<section class="process" id="places-impacted">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="pq-section-title text-center wow fadeInUp">
+                        <div class="pq-title">
+                            <div class="pq-title-sub-title justify-content-center">
+                                <img src="image/section-image/group_1727.png" alt="image">
+                                <span>Places Impacted</span>
+                            </div>
+                            <h5 class="pq-title-hadding">Places Impacted</h5>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-12">
+                    <div class="pq-process-step-slider style-2 wow fadeInUp">
+                        <div class="owl-carousel" data-dots="false" data-nav="false" data-desk_num="4" data-lap_num="3"
+                            data-tab_num="2" data-mob_num="1" data-mob_sm="1" data-autoplay="true" data-loop="true"
+                            data-margin="30">
+                            <div class="item">
+                                <div class="pq-process-step style-2 ">
+                                    <h3 class="pq-process-year">Kano</h3>
+                                    <div class="pq-timeline-line"></div>
+                                    <div class="pq-process-content">
+                                        <h5 class="pq-process-title">
+                                            Garum Malam,
+                                            Fan’nura,
+                                            Banaka,
+                                            Alhazawa.
+                                        </h5>
+                                        <p class="pq-process-description">
+
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="item">
+                                <div class="pq-process-step style-2 ">
+                                    <h3 class="pq-process-year">Jigawa</h3>
+                                    <div class="pq-timeline-line"></div>
+                                    <div class="pq-process-content">
+                                        <h5 class="pq-process-title">
+                                            Gadarayi,
+                                            Auyo.
+                                        </h5>
+                                        <!-- <p class="pq-process-description">
+                                            Lorem Ipsum is simply dummy text of the printing and It is reader will be
+                                            looking a long
+                                            industry. </p> -->
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="item">
+                                <div class="pq-process-step style-2 ">
+                                    <h3 class="pq-process-year">Adamawa</h3>
+                                    <div class="pq-timeline-line"></div>
+                                    <div class="pq-process-content">
+                                        <!-- <h5 class="pq-process-title">Looking to Future</h5>
+                                        <p class="pq-process-description">
+                                            Lorem Ipsum is simply dummy text of the printing and It is reader will be
+                                            looking a long
+                                            industry. </p> -->
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="item">
+                                <div class="pq-process-step style-2 ">
+                                    <h3 class="pq-process-year">Bauchi</h3>
+                                    <div class="pq-timeline-line"></div>
+                                    <div class="pq-process-content">
+                                        <h5 class="pq-process-title">
+                                            Ningi,
+                                            Balma,
+                                            Guda,
+                                            Nassaru,
+                                            Tudun Wada Nasaru,
+                                            Dallaji.
+                                        </h5>
+                                        <!-- <p class="pq-process-description">
+                                            Lorem Ipsum is simply dummy text of the printing and It is reader will be
+                                            looking a long
+                                            industry. </p> -->
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>

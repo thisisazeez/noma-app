@@ -1,0 +1,350 @@
+ <div class="col-lg-12">
+                        <!-- Controls removed: Reset/Export/Import (kept intentionally empty) -->
+                        <div style="text-align:center; margin-bottom:12px;">
+                            <!-- layout controls: Grid / Tree -->
+                            <div id="org-layout-controls" style="display:inline-flex; gap:8px; align-items:center;">
+                                <button id="layout-grid" class="pq-button pq-button-flat">Grid</button>
+                                <button id="layout-tree" class="pq-button pq-button-flat">Tree</button>
+                            </div>
+                            <!-- storage controls removed - persistence is localStorage-only -->
+                        </div>
+
+                        <div id="org-chart-root" class="org-chart" aria-live="polite"></div>
+                    </div>
+                </div>
+
+         </div>
+        </section>
+
+        <style>
+        /* editable organogram styles */
+        .organogram-editor { padding: 30px 0; background: #f9fafb; border-top: 1px solid #eee; }
+    .org-chart { text-align: center; padding: 20px 0; overflow-x:hidden; }
+    /* allow nodes to wrap instead of pushing off the page */
+    .org-chart ul { padding-top: 20px; position: relative; display:flex; justify-content:center; flex-wrap:wrap; gap:18px; list-style:none; max-width:100%; box-sizing:border-box; }
+        .org-chart li { text-align:center; padding:20px 5px 0 5px; position:relative; }
+        .org-chart li::before, .org-chart li::after { content:''; position:absolute; top:0; right:50%; border-top:2px solid #d1d5db; width:50%; height:20px; }
+        .org-chart li::after { left:50%; right:auto; border-left:0; }
+        .org-chart li:only-child::before, .org-chart li:only-child::after { display:none; }
+    /* modern card-style organogram node */
+    .org-node { position:relative; display:inline-block; background:linear-gradient(180deg,#ffffff 0%, #fbfdff 100%); padding:14px 14px 18px 14px; border-radius:12px; box-shadow:0 6px 20px rgba(11,22,39,0.06); width:220px; transition:transform .18s ease, box-shadow .18s ease; border:1px solid rgba(11,22,39,0.04); overflow:visible; box-sizing:border-box; max-width:calc(100% - 40px); }
+
+    /* accent bar at the top */
+    .org-node::before{ content:''; position:absolute; left:0; top:0; height:6px; width:100%; border-top-left-radius:12px; border-top-right-radius:12px; background:linear-gradient(90deg,#00aaff,#0066ff); }
+
+    /* profile image - larger & crisp */
+    .org-node img { width:120px; height:120px; object-fit:cover; border-radius:50%; display:block; margin:6px auto 8px auto; border:4px solid #fff; box-shadow:0 4px 12px rgba(2,6,23,0.06); image-rendering: -webkit-optimize-contrast; max-width:100%; height:auto; }
+    .org-node.rectangle img { border-radius:10px; }
+
+    .org-node .name { font-weight:700; margin-top:6px; font-size:1.02rem; color:#0b1632; text-align:center }
+    .org-node .title { color:#6b7280; font-size:0.92rem; text-align:center }
+
+    /* hover lift */
+    .org-node:hover{ transform:translateY(-6px); box-shadow:0 14px 36px rgba(11,22,39,0.12); }
+
+    /* edit button placed top-center but slightly overlapping accent bar */
+    .org-node .edit-btn { position:absolute; top:2px; left:50%; transform:translateX(-50%); width:38px; height:38px; border-radius:50%; display:flex; align-items:center; justify-content:center; background:#ffffff; border:1px solid rgba(0,0,0,0.06); box-shadow:0 4px 10px rgba(2,6,23,0.08); cursor:pointer; z-index:12; }
+    .org-node .edit-btn i { color:#0b1632; font-size:15px; }
+
+    /* upload icon (top-right) */
+    .org-node .upload-btn { position:absolute; top:8px; right:8px; width:34px; height:34px; border-radius:50%; display:flex; align-items:center; justify-content:center; background:#fff; border:1px solid rgba(0,0,0,0.06); box-shadow:0 4px 8px rgba(2,6,23,0.06); cursor:pointer; z-index:13; }
+    .org-node .upload-btn i { color:#0066ff; font-size:14px; }
+        .org-children { display:flex; gap:30px; justify-content:center; margin-top:10px; }
+        /* Responsive adjustments */
+        @media (max-width:1100px) {
+            .org-chart ul { gap:14px; }
+            .org-node { width:190px; }
+            .org-node img { width:100px; height:auto; }
+        }
+        @media (max-width:768px) {
+            .org-chart ul{flex-direction:column;align-items:center}
+            .org-children{flex-direction:column}
+            .org-node { width:86%; max-width:320px; }
+            .org-node img { width:92px; height:auto; }
+        }
+
+        /* grid mode styles: hide connectors and make boxes inline-flex */
+        .grid-mode .org-children, .grid-mode ul, .grid-mode li { display:block !important; }
+        .grid-mode .org-chart li::before, .grid-mode .org-chart li::after { display:none !important; }
+        .grid-mode .org-node { display:inline-flex; flex-direction:column; align-items:center; width:200px; margin:8px; }
+        .grid-levels { display:flex; flex-direction:column; gap:18px; align-items:center; }
+        .grid-level-row { display:flex; gap:20px; justify-content:center; flex-wrap:wrap; align-items:center; }
+
+        /* simple modal */
+        .org-modal { position:fixed; left:0; top:0; right:0; bottom:0; background:rgba(0,0,0,0.4); display:none; align-items:center; justify-content:center; z-index:9999; }
+        .org-modal .panel { background:#fff; padding:16px; border-radius:8px; width:340px; box-shadow:0 10px 30px rgba(0,0,0,0.2); }
+        .org-modal input[type=text]{width:100%; padding:8px; margin-bottom:8px}
+    .org-modal .actions{display:inline-flex; gap:8px; justify-content:flex-end}
+    .org-modal .actions button{display:inline-flex; align-items:center; gap:8px}
+
+    /* hide common unwanted overlay icons (safe selectors) */
+    .fa-exclamation, .fa-times, .fa-info { display:none !important; }
+    /* hide header submenu chevrons (keep decorative popup arrows visible) */
+    .pq-submenu-icon { display: none !important; }
+        </style>
+
+        <div id="org-modal" class="org-modal" role="dialog" aria-hidden="true">
+            <div class="panel">
+                <h5 id="org-modal-title">Edit Node</h5>
+                <input id="modal-name" type="text" placeholder="Name" />
+                <input id="modal-title" type="text" placeholder="Title" />
+                                <input id="modal-img" type="text" placeholder="Image URL" />
+                                <div style="display:flex; gap:8px; align-items:center; margin-bottom:8px;">
+                                    <input id="modal-file" type="file" accept="image/*" />
+                                    <img id="modal-preview" src="" alt="preview" style="width:48px; height:48px; object-fit:cover; border-radius:6px; display:none; border:1px solid #ddd" />
+                                </div>
+                <select id="modal-shape"><option value="circle">Circle</option><option value="rectangle">Rectangle</option></select>
+                        <div class="actions" style="margin-top:8px">
+                            <button id="modal-save" class="pq-button pq-button-flat"><i class="fa fa-save" aria-hidden="true"></i> Save</button>
+                            <button id="modal-cancel" class="pq-button pq-button-flat"><i class="fa fa-times" aria-hidden="true"></i> Cancel</button>
+                        </div>
+            </div>
+        </div>
+
+
+    <script>
+    (function(){
+        const KEY = 'noma_org_structure_v1';
+
+        const defaultData = {
+            id: 'root', name: 'Chairman / CEO', title: 'Chairman / CEO', img: 'image/noma/ceo.jpg', shape: 'circle',
+            children: [
+                { id:'tdagri', name:'Technical Director (Agric)', title:'Technical Director - Agric', img:'image/noma/background.jpg', shape:'circle', children:[
+                        { id:'kano', name:'Head Direct Operation Kano', title:'Head - Kano', img:'image/noma/member1.jpg' },
+                        { id:'galala', name:'Head Direct Operation Galala', title:'Head - Galala', img:'image/noma/member2.jpg' },
+                        { id:'yola', name:'Head Direct Operation Yola', title:'Head - Yola', img:'image/noma/member3.jpg' }
+                    ] },
+                { id:'cft', name:'Chief Finance & Treasury', title:'Chief Finance & Treasury', img:'image/noma/director2.jpg' },
+                { id:'coo', name:'Chief Operating Officer', title:'Chief Operating Officer', img:'image/noma/member4.jpg', children:[
+                        { id:'outgrower', name:'Outgrower Coordinator', title:'Outgrower Coordinator', img:'image/noma/member2.jpg' }
+                    ] }
+            ]
+        };
+
+        function save(data){ localStorage.setItem(KEY, JSON.stringify(data)); }
+        function load(){ try{return JSON.parse(localStorage.getItem(KEY)) || defaultData;}catch(e){return defaultData;} }
+
+        const rootEl = document.getElementById('org-chart-root');
+        const modal = document.getElementById('org-modal');
+        const modalName = document.getElementById('modal-name');
+        const modalTitle = document.getElementById('modal-title');
+        const modalImg = document.getElementById('modal-img');
+        const modalFile = document.getElementById('modal-file');
+        const modalPreview = document.getElementById('modal-preview');
+        const modalShape = document.getElementById('modal-shape');
+        const modalSave = document.getElementById('modal-save');
+        const modalCancel = document.getElementById('modal-cancel');
+        const btnReset = document.getElementById('org-reset');
+        const btnExport = document.getElementById('org-export');
+        const btnImport = document.getElementById('org-import');
+        const importFile = document.getElementById('org-import-file');
+
+        let currentEditNode = null;
+
+        const LAYOUT_KEY = 'noma_org_layout_v1';
+        let layout = localStorage.getItem(LAYOUT_KEY) || 'tree';
+
+        // persistence: localStorage-only (server mode removed)
+        const BASE_URL = '';
+
+        function render(){
+            if (layout === 'grid') return renderGrid();
+            return renderTree();
+        }
+
+        // helper: resize image file into a DataURL at a target square size (keeps aspect and covers)
+        function resizeFileToDataURL(file, targetSize = 220){
+            return new Promise((resolve, reject)=>{
+                const reader = new FileReader();
+                reader.onload = function(evt){
+                    const img = new Image();
+                    img.onload = function(){
+                        try{
+                            const dpr = window.devicePixelRatio || 1;
+                            const size = Math.round(targetSize * dpr);
+                            const canvas = document.createElement('canvas');
+                            canvas.width = size; canvas.height = size;
+                            const ctx = canvas.getContext('2d');
+                            // fill background for non-transparent images
+                            ctx.fillStyle = '#fff'; ctx.fillRect(0,0,size,size);
+                            // draw image covering the canvas (cover strategy)
+                            const sw = img.width, sh = img.height;
+                            const scale = Math.max(size / sw, size / sh);
+                            const dw = sw * scale, dh = sh * scale;
+                            const dx = (size - dw) / 2, dy = (size - dh) / 2;
+                            ctx.drawImage(img, dx, dy, dw, dh);
+                            const dataUrl = canvas.toDataURL('image/jpeg', 0.92);
+                            resolve(dataUrl);
+                        }catch(err){ reject(err); }
+                    };
+                    img.onerror = reject;
+                    img.src = evt.target.result;
+                };
+                reader.onerror = reject;
+                reader.readAsDataURL(file);
+            });
+        }
+
+        // createBox: returns the node card used by both tree (wrapped in li) and grid
+        function createBox(node){
+            const box = document.createElement('div'); box.className='org-node' + (node.shape==='rectangle' ? ' rectangle' : '');
+            const img = document.createElement('img'); img.src = node.img || 'image/placeholder.png'; img.alt = node.name || '';
+            box.appendChild(img);
+            const nm = document.createElement('div'); nm.className='name'; nm.textContent = node.name || '';
+            box.appendChild(nm);
+            const tt = document.createElement('div'); tt.className='title'; tt.textContent = node.title || '';
+            box.appendChild(tt);
+            const btn = document.createElement('button'); btn.className='edit-btn'; btn.setAttribute('aria-label','Edit '+(node.name||''));
+            btn.innerHTML = '<i class="fa fa-edit" aria-hidden="true"></i>';
+            btn.onclick = ()=> openEdit(node);
+            box.appendChild(btn);
+
+            // upload button (top-right) and hidden file input
+            const up = document.createElement('button'); up.className='upload-btn'; up.setAttribute('aria-label','Upload image for '+(node.name||''));
+            up.innerHTML = '<i class="fa fa-upload" aria-hidden="true"></i>';
+            const nodeFile = document.createElement('input'); nodeFile.type='file'; nodeFile.accept='image/*'; nodeFile.style.display='none';
+            nodeFile.addEventListener('change', async function(e){
+                const f = e.target.files[0]; if(!f) return;
+                // client-side resize to DataURL and save locally
+                resizeFileToDataURL(f, 220).then(function(url){
+                    node.img = url;
+                    let data = load();
+                    function replace(n){ if(n.id===node.id){ n.img = url; return true;} if(n.children){ for(let c of n.children){ if(replace(c)) return true; } } return false; }
+                    replace(data);
+                    save(data);
+                    render();
+                }).catch(function(){
+                    const reader = new FileReader();
+                    reader.onload = function(ev){ const url = ev.target.result; node.img = url; let data = load(); function replace(n){ if(n.id===node.id){ n.img = url; return true;} if(n.children){ for(let c of n.children){ if(replace(c)) return true; } } return false; } replace(data); save(data); render(); };
+                    reader.readAsDataURL(f);
+                });
+            });
+            box.appendChild(nodeFile);
+            up.onclick = ()=> { nodeFile.click(); };
+            box.appendChild(up);
+
+            return box;
+        }
+
+        // buildNode: returns the nested UL structure for tree layout
+        function buildNode(node){
+            const ul = document.createElement('ul'); ul.style.listStyle='none';
+            const li = document.createElement('li');
+            const itemBox = createBox(node);
+            li.appendChild(itemBox);
+
+            if (node.children && node.children.length){
+                const childrenWrap = document.createElement('div'); childrenWrap.className='org-children';
+                node.children.forEach(child => {
+                    const childNode = buildNode(child);
+                    childrenWrap.appendChild(childNode);
+                });
+                li.appendChild(childrenWrap);
+            }
+
+            ul.appendChild(li);
+            return ul;
+        }
+
+        // collect nodes grouped by their depth (level) using BFS
+        function collectByLevel(root){
+            const levels = [];
+            const q = [{ node: root, level: 0 }];
+            while(q.length){
+                const { node, level } = q.shift();
+                if (!levels[level]) levels[level] = [];
+                levels[level].push(node);
+                if (node.children && node.children.length){
+                    node.children.forEach(c=> q.push({ node: c, level: level+1 }));
+                }
+            }
+            return levels;
+        }
+
+        function renderTree(){
+            const data = load();
+            rootEl.classList.remove('grid-mode');
+            rootEl.innerHTML = '';
+            const tree = buildNode(data);
+            rootEl.appendChild(tree);
+        }
+
+        function renderGrid(){
+            const data = load();
+            rootEl.classList.add('grid-mode');
+            rootEl.innerHTML = '';
+            const levels = collectByLevel(data);
+            const container = document.createElement('div'); container.className='grid-levels';
+            levels.forEach((lvlNodes, idx)=>{
+                const row = document.createElement('div'); row.className='grid-level-row';
+                row.setAttribute('data-level', idx);
+                lvlNodes.forEach(n=>{ const box = createBox(n); row.appendChild(box); });
+                container.appendChild(row);
+            });
+            rootEl.appendChild(container);
+        }
+
+        function openEdit(node){
+            currentEditNode = node;
+            modalName.value = node.name || '';
+            modalTitle.value = node.title || '';
+            modalImg.value = node.img || '';
+            modalShape.value = node.shape || 'circle';
+        if (modalImg.value) { modalPreview.src = modalImg.value; modalPreview.style.display = 'inline-block'; } else { modalPreview.style.display='none'; }
+        modal.style.display = 'flex';
+            modal.setAttribute('aria-hidden','false');
+        }
+
+        function closeModal(){ modal.style.display='none'; modal.setAttribute('aria-hidden','true'); currentEditNode=null; }
+
+        modalSave.addEventListener('click', function(){
+            if (!currentEditNode) return;
+            currentEditNode.name = modalName.value.trim();
+            currentEditNode.title = modalTitle.value.trim();
+            currentEditNode.img = modalImg.value.trim();
+            currentEditNode.shape = modalShape.value;
+            // save entire data by traversing tree and replacing node by id (localStorage only)
+            let data = load();
+            function replace(n){ if (n.id === currentEditNode.id){ Object.assign(n, currentEditNode); return true;} if (n.children) { for (let c of n.children) { if (replace(c)) return true; } } return false; }
+            replace(data);
+            save(data);
+            render();
+            closeModal();
+        });
+
+        modalCancel.addEventListener('click', closeModal);
+
+        if (btnReset) {
+            btnReset.addEventListener('click', ()=>{ if (confirm('Reset organogram to default?')){ save(defaultData); render(); } });
+        }
+        if (btnExport) {
+            btnExport.addEventListener('click', ()=>{ const data = load(); const blob = new Blob([JSON.stringify(data, null, 2)], {type:'application/json'}); const url = URL.createObjectURL(blob); const a = document.createElement('a'); a.href = url; a.download = 'organogram.json'; a.click(); URL.revokeObjectURL(url); });
+        }
+        if (btnImport && importFile) {
+            btnImport.addEventListener('click', ()=> importFile.click());
+            importFile.addEventListener('change', function(e){ const f = e.target.files[0]; if (!f) return; const r = new FileReader(); r.onload = function(){ try{ const json = JSON.parse(r.result); save(json); render(); alert('Imported'); }catch(err){ alert('Invalid JSON'); } }; r.readAsText(f); });
+        }
+
+                // handle image file input -> dataURL
+                modalFile.addEventListener('change', function(e){
+                    const f = e.target.files[0];
+                    if (!f) return;
+                    // create a higher-res DataURL so the image looks crisp at display size
+                    resizeFileToDataURL(f, 220).then(function(url){ modalImg.value = url; modalPreview.src = url; modalPreview.style.display = 'inline-block'; }).catch(function(){ const reader = new FileReader(); reader.onload = function(ev){ modalImg.value = ev.target.result; modalPreview.src = ev.target.result; modalPreview.style.display = 'inline-block'; }; reader.readAsDataURL(f); });
+                });
+
+        // wire layout controls
+        const btnGrid = document.getElementById('layout-grid');
+        const btnTree = document.getElementById('layout-tree');
+        function setLayout(l){ layout = l; localStorage.setItem(LAYOUT_KEY, l); render(); }
+        if (btnGrid) btnGrid.addEventListener('click', ()=> setLayout('grid'));
+        if (btnTree) btnTree.addEventListener('click', ()=> setLayout('tree'));
+
+        // initial render
+        if (!localStorage.getItem(KEY)) save(defaultData);
+        // restore layout from storage
+        const saved = localStorage.getItem(LAYOUT_KEY); if (saved) layout = saved;
+        // initial render
+        render();
+    })();
+    </script>

@@ -1,0 +1,58 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Our Work - Noma - Produce Marketing Company{% endblock %}
+{% block content %}
+
+<br>
+
+<section class="blog" id="how-we-drive-transformation">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="pq-section-title text-center wow fadeInUp">
+                    <div class="pq-title">
+                        <div class="pq-title-sub-title justify-content-center">
+                            <img src="{% static 'image/section-image/group_1727.png' %}" alt="image">
+                        </div>
+                        <h5 class="pq-title-hadding">How We Drive Transformation</h5>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="pq-hover-active wow fadeInUp">
+                <div class="col-lg-12">
+
+                    {% for transformation in transformations %}
+                    <div class="pq-blog-post pq-list pq-style-1 pq-hover-item {% if forloop.first %}pq-active{% endif %}">
+                        <div class="pq-post-meta">
+                            <div class="pq-post-date">
+                                <a href="#">
+                                    <span class="pq-post-blk">
+                                        {{ forloop.counter|stringformat:"02d" }}
+                                    </span>
+                                </a>
+                            </div>
+                        </div>
+
+                        <div class="pq-blog-contain">
+                            <h5 class="pq-blog-title">
+                                <a href="#">{{ transformation.name }}</a>
+                            </h5>
+                            {% if transformation.description %}
+                            <p class="pq-blog-description mt-2">{{ transformation.description }}</p>
+                            {% endif %}
+                        </div>
+                    </div>
+                    {% empty %}
+                    <p class="text-center mt-4">No transformations available yet.</p>
+                    {% endfor %}
+
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+{% endblock content %}

@@ -1,0 +1,61 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Places Impacted - Noma - Produce Marketing Company{% endblock %}
+
+{% block content %}
+<br>
+
+<section class="faq">
+  <div class="container">
+    {% for state in states %}
+    <div class="row flex-column-reverse flex-xl-row mb-5">
+      <div class="col-xl wow fadeInRight">
+        <div class="pq-section-title mb-4">
+          <div class="pq-title">
+            <div class="pq-title-sub-title">
+              <img src="{% static 'image/section-image/group_1727.png' %}" alt="image">
+              <span>Places Impacted</span>
+            </div>
+            <h5 class="pq-title-hadding">{{ state.name }}</h5>
+          </div>
+        </div>
+
+        <div class="pq-accordion-block">
+          {% for lga in state.local_governments.all %}
+          <div class="pq-accordion-box">
+            <div class="pq-ad-title">
+              <h4 class="ad-title-text">
+                {{ lga.name }}
+                <i aria-hidden="true" class="ion ion-ios-arrow-down active"></i>
+                <i aria-hidden="true" class="ion ion-ios-arrow-up inactive"></i>
+              </h4>
+            </div>
+
+            <div class="pq-accordion-details">
+              <div class="impacted">
+                {% for place in lga.places_impacted.all %}
+                  <div class="pq-post-media">
+                    {% if place.is_video %}
+                      <video controls class="img-fluid" style="height: 300px; width: 300px; object-fit: cover;">
+                        <source src="{{ place.file.url }}" type="video/mp4">
+                        Your browser doesn't support video.
+                      </video>
+                    {% else %}
+                      <img src="{{ place.file.url }}" alt="image" width="300" height="300">
+                    {% endif %}
+                  </div>
+                {% empty %}
+                  <p>No media available for {{ lga.name }}.</p>
+                {% endfor %}
+              </div>
+            </div>
+          </div>
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+</section>
+
+{% endblock content %}
