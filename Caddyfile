@@ -1,0 +1,17 @@
+nomanigeria.com {
+    reverse_proxy noma_nginx:80
+
+    encode gzip
+
+    header {
+        Strict-Transport-Security "max-age=31536000;"
+        X-Content-Type-Options "nosniff"
+        X-Frame-Options "DENY"
+        Referrer-Policy "strict-origin-when-cross-origin"
+    }
+
+}
+
+www.nomanigeria.com {
+    redir https://nomanigeria.com{uri}
+}
