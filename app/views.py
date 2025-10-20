@@ -1,6 +1,17 @@
 from django.shortcuts import render, redirect
-from .models import OurTeam, About, Partners, WhatWeDo, Contact, Gallery, Transformation, InnovativeAgriculturalPractices
+from .models import (
+    OurTeam,
+    About,
+    Partners,
+    WhatWeDo,
+    Contact,
+    Gallery,
+    Transformation,
+    InnovativeAgriculturalPractices,
+    State,
+)
 from django.contrib import messages
+
 
 def index(request):
     whatwedo = WhatWeDo.objects.all()
@@ -9,7 +20,7 @@ def index(request):
     context = {
         "whatwedo": whatwedo,
         "partners": partners,
-        }
+    }
     return render(request, "index.html", context)
 
 
@@ -42,7 +53,7 @@ def contact_view(request):
             email=email,
             phone=phone,
             service=service,
-            further_explanation=further_explanation
+            further_explanation=further_explanation,
         )
 
         messages.success(request, "Your message has been sent successfully!")
@@ -60,17 +71,21 @@ def gallery_view(request):
 
     return render(request, "masonery.html", context)
 
+
 def transformation_view(request):
     transformations = Transformation.objects.all()
     return render(request, "our-work.html", {"transformations": transformations})
 
+
 def coming_soon(request):
     return render(request, "coming-soon.html")
+
 
 def iap_view(request):
     iap_items = InnovativeAgriculturalPractices.objects.all()
     return render(request, "iap.html", {"iap_items": iap_items})
 
+
 def places_impacted(request):
     states = State.objects.prefetch_related("local_governments__places_impacted").all()
-    return render(request, "places_impacted.html", {"states": states})
+    return render(request, "places-impacted.html", {"states": states})

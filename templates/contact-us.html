@@ -1,160 +1,231 @@
-{% extends 'base.html' %}
-{% load static %}
-{% block title %}Contact Us - Noma - Produce Marketing Company{% endblock %}
-{% block content %}
-<br>
-    <!-- Write To Us -->
-    <section class="contact pq-bg-gray pq-bg-expand">
-        {% if messages %}
-            <div class="alert alert-success">
-                {% for message in messages %}
-                    {{ message }}
-                {% endfor %}
-            </div>
-        {% endif %}
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-5">
-                    <div class="pq-section-title text-start pe-3 wow fadeInRight">
-                        <div class="pq-title">
-                            <div class="pq-title-sub-title">
-                                <img src="{% static 'image/section-image/group_1727.png' %}" alt="image">
-                                <span>Write to Us</span>
-                            </div>
-                            <h5 class="pq-title-hadding">How We Can Help Your <span>Farm Grow And Thrive</span></h5>
-                        </div>
-                    </div>
-
-                    <div class="pq-icon-box pq-style-3 wow fadeInRight">
-                        <div class="pq-icon-box-icon">
-                            <i aria-hidden="true" class=" flaticon-phone-call"></i>
-                        </div>
-                        <div class="pq-icon-box-content">
-                            <h5 class="pq-icon-box-title">Have Question?</h5>
-                            <p class="pq-icon-box-description">Free +234 8035732567</p>
-                        </div>
-                    </div>
-
-                    <div class="pq-icon-box pq-style-3 mt-4 wow fadeInRight">
-                        <div class="pq-icon-box-icon">
-                            <i aria-hidden="true" class=" flaticon-mail"></i>
-                        </div>
-                        <div class="pq-icon-box-content">
-                            <h5 class="pq-icon-box-title">Write Email</h5>
-                            <p class="pq-icon-box-description">noma@gmail .com </p>
-                        </div>
-                    </div>
-
-                    <div class="pq-icon-box pq-style-3 mt-4 wow fadeInRight">
-                        <div class="pq-icon-box-icon">
-                            <i aria-hidden="true" class=" flaticon-location"></i>
-                        </div>
-                        <div class="pq-icon-box-content">
-                            <h5 class="pq-icon-box-title"> Visit Now</h5>
-                            <p class="pq-icon-box-description"> 5th Floor African Alliance Building, F1 Sani Abacha Way, Airport Road Kano, Kano State.</p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-lg-7 ps-lg-5 mt-5 mt-lg-0">
-                    <div class="pq-form-box pq-style-1 wow  fadeInLeft animated wow fadeInRight">
-                        <form method="POST" action="{% url 'contact_us' %}">
-                            {% csrf_token %}
-                            <div class="row">
-                                <div class="col-lg-6">
-                                    <div class="pq-form">
-                                        <input type="text" name="name" id="name" placeholder="Full Name" required>
-                                    </div>
-                                </div>
-
-                                <div class="col-lg-6">
-                                    <div class="pq-form">
-                                        <input type="email" name="email" id="email" placeholder="Email Address" required>
-                                    </div>
-                                </div>
-
-                                <div class="col-lg-6">
-                                    <div class="pq-form">
-                                        <input type="text" name="Phone" id="Phone" placeholder="Phone Number">
-                                    </div>
-                                </div>
-
-                                <div class="col-lg-6">
-                                    <div class="pq-form">
-                                        <select id="service" name="service" class="form-select" required>
-                                            <option value="">Select a service...</option>
-                                            <option value="mechanization">Mechanization</option>
-                                            <option value="fertilizer">Fertilizer</option>
-                                            <option value="extension">Extension Services</option>
-                                            <option value="produce">Produce</option>
-                                            <option value="other">Others</option>
-                                        </select>
-                                        <input type="text" id="service-other" name="service_other"
-                                            placeholder="Please specify other service"
-                                            style="display:none; margin-top:8px;" />
-                                    </div>
-                                </div>
-
-                                <div class="col-lg-12">
-                                    <div class="pq-form">
-                                        <textarea name="further_explanation" placeholder="Further Explanation If Any..."></textarea>
-                                    </div>
-                                </div>
-
-                                <div class="pq-btn-container">
-                                    <button type="submit" class="pq-button pq-button-flat">
-                                        <div class="pq-button-block">
-                                            <span class="pq-button-text">Get in touch</span>
-                                        </div>
-                                    </button>
-                                </div>
-                            </div>
-                        </form>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    {% if partners %}
-    <section class="clinet pt-0">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12">
-                    <div class="pq-client-box-slider pq-style-2">
-                        <div class="pq-clint-box-border">
-                            <h3 class="pq-client-box-title"><span>Partners - </span>Our Trusted Partners</h3>
-                        </div>
-                        <div class="owl-carousel owl-loaded owl-drag" data-dots="false" data-nav="false"
-                            data-desk_num="5" data-lap_num="2" data-tab_num="2" data-mob_num="2" data-mob_sm="1"
-                            data-autoplay="false" data-loop="true" data-margin="30">
-                            {% for partner in partners %}
-                            <div class="item">
-                                <div class="pq-client-box pq-style-2">
-                                    <a href="#">
-                                        <img src="{{ partner.image.url }}" alt="{{ partner.name }}">
-                                    </a>
-                                </div>
-                            </div>
-                            {% endfor %}
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+{% extends 'base.html' %} {% load static %} {% block title %}Contact Us - Noma -
+Produce Marketing Company{% endblock %} {% block content %}
+<br />
+<!-- Write To Us -->
+<section class="contact pq-bg-gray pq-bg-expand">
+    {% if messages %}
+    <div class="alert alert-success">
+        {% for message in messages %} {{ message }} {% endfor %}
+    </div>
     {% endif %}
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-5">
+                <div class="pq-section-title text-start pe-3 wow fadeInRight">
+                    <div class="pq-title">
+                        <div class="pq-title-sub-title">
+                            <img
+                                src="{% static 'image/section-image/group_1727.png' %}"
+                                alt="image"
+                            />
+                            <span>Write to Us</span>
+                        </div>
+                        <h5 class="pq-title-hadding">
+                            How We Can Help Your
+                            <span>Farm Grow And Thrive</span>
+                        </h5>
+                    </div>
+                </div>
 
-    <script>
-        // Toggle 'other' service input visibility
-        (function(){
-            var svc = document.getElementById('service');
-            var other = document.getElementById('service-other');
-            if (!svc || !other) return;
-            svc.addEventListener('change', function(){
-                if (svc.value === 'other') { other.style.display = 'block'; other.focus(); }
-                else { other.style.display = 'none'; other.value = ''; }
-            });
-        })();
-    </script>
+                <div class="pq-icon-box pq-style-3 wow fadeInRight">
+                    <div class="pq-icon-box-icon">
+                        <i aria-hidden="true" class="flaticon-phone-call"></i>
+                    </div>
+                    <div class="pq-icon-box-content">
+                        <h5 class="pq-icon-box-title">Have Question?</h5>
+                        <p class="pq-icon-box-description">
+                            Free +234 8035732567
+                        </p>
+                    </div>
+                </div>
+
+                <div class="pq-icon-box pq-style-3 mt-4 wow fadeInRight">
+                    <div class="pq-icon-box-icon">
+                        <i aria-hidden="true" class="flaticon-mail"></i>
+                    </div>
+                    <div class="pq-icon-box-content">
+                        <h5 class="pq-icon-box-title">Write Email</h5>
+                        <p class="pq-icon-box-description">noma@gmail .com</p>
+                    </div>
+                </div>
+
+                <div class="pq-icon-box pq-style-3 mt-4 wow fadeInRight">
+                    <div class="pq-icon-box-icon">
+                        <i aria-hidden="true" class="flaticon-location"></i>
+                    </div>
+                    <div class="pq-icon-box-content">
+                        <h5 class="pq-icon-box-title">Visit Now</h5>
+                        <p class="pq-icon-box-description">
+                            5th Floor African Alliance Building, F1 Sani Abacha
+                            Way, Airport Road Kano, Kano State.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-7 ps-lg-5 mt-5 mt-lg-0">
+                <div
+                    class="pq-form-box pq-style-1 wow fadeInLeft animated wow fadeInRight"
+                >
+                    <form method="POST" action="{% url 'contact_us' %}">
+                        {% csrf_token %}
+                        <div class="row">
+                            <div class="col-lg-6">
+                                <div class="pq-form">
+                                    <input
+                                        type="text"
+                                        name="name"
+                                        id="name"
+                                        placeholder="Full Name"
+                                        required
+                                    />
+                                </div>
+                            </div>
+
+                            <div class="col-lg-6">
+                                <div class="pq-form">
+                                    <input
+                                        type="email"
+                                        name="email"
+                                        id="email"
+                                        placeholder="Email Address"
+                                        required
+                                    />
+                                </div>
+                            </div>
+
+                            <div class="col-lg-6">
+                                <div class="pq-form">
+                                    <input
+                                        type="text"
+                                        name="Phone"
+                                        id="Phone"
+                                        placeholder="Phone Number"
+                                    />
+                                </div>
+                            </div>
+
+                            <div class="col-lg-6">
+                                <div class="pq-form">
+                                    <select
+                                        id="service"
+                                        name="service"
+                                        class="form-select"
+                                        required
+                                    >
+                                        <option value="">
+                                            Select a service...
+                                        </option>
+                                        <option value="mechanization">
+                                            Mechanization
+                                        </option>
+                                        <option value="fertilizer">
+                                            Fertilizer
+                                        </option>
+                                        <option value="extension">
+                                            Extension Services
+                                        </option>
+                                        <option value="produce">Produce</option>
+                                        <option value="other">Others</option>
+                                    </select>
+                                    <input
+                                        type="text"
+                                        id="service-other"
+                                        name="service_other"
+                                        placeholder="Please specify other service"
+                                        style="display: none; margin-top: 8px"
+                                    />
+                                </div>
+                            </div>
+
+                            <div class="col-lg-12">
+                                <div class="pq-form">
+                                    <textarea
+                                        name="further_explanation"
+                                        placeholder="Further Explanation If Any..."
+                                    ></textarea>
+                                </div>
+                            </div>
+
+                            <div class="pq-btn-container">
+                                <button
+                                    type="submit"
+                                    class="pq-button pq-button-flat"
+                                >
+                                    <div class="pq-button-block">
+                                        <span class="pq-button-text"
+                                            >Get in touch</span
+                                        >
+                                    </div>
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+{% if partners %}
+<section class="clinet pt-0">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="pq-client-box-slider pq-style-2">
+                    <div class="pq-clint-box-border">
+                        <h3 class="pq-client-box-title">
+                            <span>Partners - </span>Our Trusted Partners
+                        </h3>
+                    </div>
+                    <div
+                        class="owl-carousel owl-loaded owl-drag"
+                        data-dots="false"
+                        data-nav="false"
+                        data-desk_num="5"
+                        data-lap_num="2"
+                        data-tab_num="2"
+                        data-mob_num="2"
+                        data-mob_sm="1"
+                        data-autoplay="false"
+                        data-loop="true"
+                        data-margin="30"
+                    >
+                        {% for partner in partners %}
+                        <div class="item">
+                            <div class="pq-client-box pq-style-2">
+                                <a href="#">
+                                    <img
+                                        src="{{ partner.logo.url }}"
+                                        alt="{{ partner.name }}"
+                                    />
+                                </a>
+                            </div>
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endif %}
+
+<script>
+    // Toggle 'other' service input visibility
+    (function () {
+        var svc = document.getElementById("service");
+        var other = document.getElementById("service-other");
+        if (!svc || !other) return;
+        svc.addEventListener("change", function () {
+            if (svc.value === "other") {
+                other.style.display = "block";
+                other.focus();
+            } else {
+                other.style.display = "none";
+                other.value = "";
+            }
+        });
+    })();
+</script>
 {% endblock content %}
