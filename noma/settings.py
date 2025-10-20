@@ -24,9 +24,19 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = "django-insecure-#!jzx3+ixj_ux$-%(v2-8*0$svarmpe4qgf$2s_a_*l!tqf#cb"
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = ["*"]
+ALLOWED_HOSTS = [
+    "nomanigeria.com",
+    "www.nomanigeria.com",
+    "localhost",
+    "127.0.0.1",
+]
+
+CSRF_TRUSTED_ORIGINS = [
+    "https://nomanigeria.com",
+    "https://www.nomanigeria.com",
+]
 
 
 # Application definition
