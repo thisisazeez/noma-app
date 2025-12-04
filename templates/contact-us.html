@@ -1,5 +1,42 @@
-{% extends 'base.html' %} {% load static %} {% block title %}Contact Us - Noma -
-Produce Marketing Company{% endblock %} {% block content %}
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Contact Us - Noma | Get in Touch for Agricultural Support{% endblock %}
+
+{% block seo_description %}Contact Noma for agricultural support, mechanization services, fertilizer, extension
+services, and produce marketing. Located in Kano, Nigeria. Call +234 8035732567.{% endblock %}
+
+{% block seo_keywords %}contact Noma, Noma Kano, agricultural support Nigeria, farming services contact, mechanization
+services, fertilizer supply{% endblock %}
+
+{% block extra_schema %}
+<script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "LocalBusiness",
+    "name": "Noma - Produce Marketing Company",
+    "image": "https://nomanigeria.com/static/image/noma.jpeg",
+    "url": "https://nomanigeria.com",
+    "telephone": "+234-803-573-2567",
+    "email": "noma@gmail.com",
+    "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "5th Floor African Alliance Building, F1 Sani Abacha Way, Airport Road",
+        "addressLocality": "Kano",
+        "addressRegion": "Kano State",
+        "addressCountry": "NG"
+    },
+    "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": 12.0022,
+        "longitude": 8.5919
+    },
+    "openingHours": "Mo-Fr 08:00-17:00",
+    "priceRange": "$$"
+}
+</script>
+{% endblock %}
+
+{% block content %}
 <br />
 <!-- Write To Us -->
 <section class="contact pq-bg-gray pq-bg-expand">
@@ -14,10 +51,7 @@ Produce Marketing Company{% endblock %} {% block content %}
                 <div class="pq-section-title text-start pe-3 wow fadeInRight">
                     <div class="pq-title">
                         <div class="pq-title-sub-title">
-                            <img
-                                src="{% static 'image/section-image/group_1727.png' %}"
-                                alt="image"
-                            />
+                            <img src="{% static 'image/section-image/group_1727.png' %}" alt="image" />
                             <span>Write to Us</span>
                         </div>
                         <h5 class="pq-title-hadding">
@@ -64,55 +98,31 @@ Produce Marketing Company{% endblock %} {% block content %}
             </div>
 
             <div class="col-lg-7 ps-lg-5 mt-5 mt-lg-0">
-                <div
-                    class="pq-form-box pq-style-1 wow fadeInLeft animated wow fadeInRight"
-                >
+                <div class="pq-form-box pq-style-1 wow fadeInLeft animated wow fadeInRight">
                     <form method="POST" action="{% url 'contact_us' %}">
                         {% csrf_token %}
                         <div class="row">
                             <div class="col-lg-6">
                                 <div class="pq-form">
-                                    <input
-                                        type="text"
-                                        name="name"
-                                        id="name"
-                                        placeholder="Full Name"
-                                        required
-                                    />
+                                    <input type="text" name="name" id="name" placeholder="Full Name" required />
                                 </div>
                             </div>
 
                             <div class="col-lg-6">
                                 <div class="pq-form">
-                                    <input
-                                        type="email"
-                                        name="email"
-                                        id="email"
-                                        placeholder="Email Address"
-                                        required
-                                    />
+                                    <input type="email" name="email" id="email" placeholder="Email Address" required />
                                 </div>
                             </div>
 
                             <div class="col-lg-6">
                                 <div class="pq-form">
-                                    <input
-                                        type="text"
-                                        name="Phone"
-                                        id="Phone"
-                                        placeholder="Phone Number"
-                                    />
+                                    <input type="text" name="Phone" id="Phone" placeholder="Phone Number" />
                                 </div>
                             </div>
 
                             <div class="col-lg-6">
                                 <div class="pq-form">
-                                    <select
-                                        id="service"
-                                        name="service"
-                                        class="form-select"
-                                        required
-                                    >
+                                    <select id="service" name="service" class="form-select" required>
                                         <option value="">
                                             Select a service...
                                         </option>
@@ -128,34 +138,23 @@ Produce Marketing Company{% endblock %} {% block content %}
                                         <option value="produce">Produce</option>
                                         <option value="other">Others</option>
                                     </select>
-                                    <input
-                                        type="text"
-                                        id="service-other"
-                                        name="service_other"
+                                    <input type="text" id="service-other" name="service_other"
                                         placeholder="Please specify other service"
-                                        style="display: none; margin-top: 8px"
-                                    />
+                                        style="display: none; margin-top: 8px" />
                                 </div>
                             </div>
 
                             <div class="col-lg-12">
                                 <div class="pq-form">
-                                    <textarea
-                                        name="further_explanation"
-                                        placeholder="Further Explanation If Any..."
-                                    ></textarea>
+                                    <textarea name="further_explanation"
+                                        placeholder="Further Explanation If Any..."></textarea>
                                 </div>
                             </div>
 
                             <div class="pq-btn-container">
-                                <button
-                                    type="submit"
-                                    class="pq-button pq-button-flat"
-                                >
+                                <button type="submit" class="pq-button pq-button-flat">
                                     <div class="pq-button-block">
-                                        <span class="pq-button-text"
-                                            >Get in touch</span
-                                        >
+                                        <span class="pq-button-text">Get in touch</span>
                                     </div>
                                 </button>
                             </div>
@@ -178,27 +177,14 @@ Produce Marketing Company{% endblock %} {% block content %}
                             <span>Partners - </span>Our Trusted Partners
                         </h3>
                     </div>
-                    <div
-                        class="owl-carousel owl-loaded owl-drag"
-                        data-dots="false"
-                        data-nav="false"
-                        data-desk_num="5"
-                        data-lap_num="2"
-                        data-tab_num="2"
-                        data-mob_num="2"
-                        data-mob_sm="1"
-                        data-autoplay="false"
-                        data-loop="true"
-                        data-margin="30"
-                    >
+                    <div class="owl-carousel owl-loaded owl-drag" data-dots="false" data-nav="false" data-desk_num="5"
+                        data-lap_num="2" data-tab_num="2" data-mob_num="2" data-mob_sm="1" data-autoplay="false"
+                        data-loop="true" data-margin="30">
                         {% for partner in partners %}
                         <div class="item">
                             <div class="pq-client-box pq-style-2">
                                 <a href="#">
-                                    <img
-                                        src="{{ partner.logo.url }}"
-                                        alt="{{ partner.name }}"
-                                    />
+                                    <img src="{{ partner.logo.url }}" alt="{{ partner.name }}" />
                                 </a>
                             </div>
                         </div>

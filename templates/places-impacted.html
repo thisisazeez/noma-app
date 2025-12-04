@@ -1,6 +1,12 @@
 {% extends 'base.html' %}
 {% load static %}
-{% block title %}Places Impacted - Noma - Produce Marketing Company{% endblock %}
+{% block title %}Places Impacted - Noma | Communities We Serve{% endblock %}
+
+{% block seo_description %}Explore the communities and regions across Nigeria where Noma has made a positive impact on
+smallholder farmers and agricultural practices.{% endblock %}
+
+{% block seo_keywords %}Noma impact, communities served, Nigerian states, agricultural development regions, farmer
+support{% endblock %}
 
 {% block content %}
 <br>
@@ -34,18 +40,18 @@
             <div class="pq-accordion-details">
               <div class="impacted">
                 {% for place in lga.places_impacted.all %}
-                  <div class="pq-post-media">
-                    {% if place.is_video %}
-                      <video controls class="img-fluid" style="height: 300px; width: 300px; object-fit: cover;">
-                        <source src="{{ place.file.url }}" type="video/mp4">
-                        Your browser doesn't support video.
-                      </video>
-                    {% else %}
-                      <img src="{{ place.file.url }}" alt="image" width="300" height="300">
-                    {% endif %}
-                  </div>
+                <div class="pq-post-media">
+                  {% if place.is_video %}
+                  <video controls class="img-fluid" style="height: 300px; width: 300px; object-fit: cover;">
+                    <source src="{{ place.file.url }}" type="video/mp4">
+                    Your browser doesn't support video.
+                  </video>
+                  {% else %}
+                  <img src="{{ place.file.url }}" alt="image" width="300" height="300">
+                  {% endif %}
+                </div>
                 {% empty %}
-                  <p>No media available for {{ lga.name }}.</p>
+                <p>No media available for {{ lga.name }}.</p>
                 {% endfor %}
               </div>
             </div>

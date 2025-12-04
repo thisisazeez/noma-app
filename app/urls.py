@@ -11,4 +11,6 @@ urlpatterns = [
     path("coming-soon/", views.coming_soon, name="coming_soon"),
     path("innovative-agricultural-practices/", views.iap_view, name="iap"),
     path("places-impacted/", views.places_impacted, name="places_impacted"),
+    path("robots.txt", views.robots_txt, name="robots_txt"),
 ]
+

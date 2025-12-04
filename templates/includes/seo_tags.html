@@ -1,0 +1,63 @@
+{% comment %}
+SEO Meta Tags Template Include
+This template provides comprehensive SEO meta tags for all pages.
+Include this in base.html inside the
+
+<head> section.
+
+    Variables from context processor:
+    - canonical_url: Current page canonical URL
+    - site_url: Base site URL
+    - site_name: Site name
+    - default_seo_image: Default Open Graph image URL
+    - organization_schema_json: JSON-LD Organization data
+
+    Variables from page templates (optional overrides):
+    - seo_description: Meta description (via block override)
+    - seo_keywords: Meta keywords (via block override)
+    {% endcomment %}
+
+    {# Basic Meta Tags #}
+    <meta name="description"
+        content="{% block seo_description %}Noma empowers smallholder farmers in Nigeria through innovative agricultural practices, mechanized solutions, and direct market access.{% endblock %}">
+    <meta name="keywords"
+        content="{% block seo_keywords %}agriculture, farming, Nigeria, smallholder farmers, agribusiness, produce marketing{% endblock %}">
+    <meta name="author" content="Noma - Produce Marketing Company">
+    <meta name="robots" content="index, follow">
+    <meta name="googlebot" content="index, follow">
+
+    {# Canonical URL #}
+    <link rel="canonical" href="{{ canonical_url }}">
+
+    {# Open Graph Meta Tags #}
+    <meta property="og:title" content="{% block og_title %}{{ site_name }}{% endblock %}">
+    <meta property="og:description"
+        content="{% block og_description %}Noma empowers smallholder farmers in Nigeria through innovative agricultural practices.{% endblock %}">
+    <meta property="og:image" content="{{ default_seo_image }}">
+    <meta property="og:url" content="{{ canonical_url }}">
+    <meta property="og:type" content="{% block og_type %}website{% endblock %}">
+    <meta property="og:site_name" content="{{ site_name }}">
+    <meta property="og:locale" content="en_NG">
+
+    {# Twitter Card Meta Tags #}
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="{% block twitter_title %}{{ site_name }}{% endblock %}">
+    <meta name="twitter:description"
+        content="{% block twitter_description %}Noma empowers smallholder farmers in Nigeria through innovative agricultural practices.{% endblock %}">
+    <meta name="twitter:image" content="{{ default_seo_image }}">
+
+    {# Additional Meta Tags #}
+    <meta name="theme-color" content="#1c2e16">
+    <meta name="msapplication-TileColor" content="#1c2e16">
+
+    {# Preconnect hints for performance #}
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    {# JSON-LD Structured Data - Organization #}
+    <script type="application/ld+json">
+{{ organization_schema_json|safe }}
+</script>
+
+    {# Additional Page-specific Schema #}
+    {% block extra_schema %}{% endblock %}

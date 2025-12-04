@@ -2,204 +2,138 @@
 
 <!doctype html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>
-            {% block title%} Noma - Produce Marketing Company {% endblock title %}
-        </title>
 
-        <!-- Favicon icon -->
-        <link
-            rel="shortcut icon"
-            href="{% static 'image/favicon/favicon.png' %}"
-        />
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>
+        {% block title%} Noma - Produce Marketing Company {% endblock title %}
+    </title>
 
-        <!-- Bootstrap -->
-        <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}" />
+    <!-- SEO Meta Tags -->
+    {% include 'includes/seo_tags.html' %}
 
-        <!-- rev css -->
-        <link rel="stylesheet" href="{% static 'rev/css/rs6.css' %}" />
+    <!-- Favicon icon -->
+    <link rel="shortcut icon" href="{% static 'image/favicon/favicon.png' %}" />
 
-        <!-- Animation -->
-        <link rel="stylesheet" href="{% static 'css/animations.min.css' %}" />
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}" />
 
-        <!-- Owl slider -->
-        <link rel="stylesheet" href="{% static 'css/owl.carousel.css' %}" />
+    <!-- rev css -->
+    <link rel="stylesheet" href="{% static 'rev/css/rs6.css' %}" />
 
-        <!-- Magnafic Popup -->
-        <link
-            rel="stylesheet"
-            href="{% static 'css/magnific-popup.min.css' %}"
-        />
+    <!-- Animation -->
+    <link rel="stylesheet" href="{% static 'css/animations.min.css' %}" />
 
-        <!-- Font Link -->
-        <link
-            rel="stylesheet"
-            href="{% static 'font/flaticons_1/flaticon_agriculture.css' %}"
-        />
-        <link
-            rel="stylesheet"
-            href="{% static 'font/flaticons_2/flaticon_mycollection.css' %}"
-        />
-        <link
-            rel="stylesheet"
-            href="{% static 'font/ionicons/ionicons.min.css' %}"
-        />
-        <link
-            rel="stylesheet"
-            href="{% static 'font/themify-icons/themify-icons.css' %}"
-        />
-        <link
-            rel="stylesheet"
-            href="{% static 'font/font-awesome/css/all.min.css' %}"
-        />
+    <!-- Owl slider -->
+    <link rel="stylesheet" href="{% static 'css/owl.carousel.css' %}" />
 
-        <!-- Style -->
-        <link rel="stylesheet" href="{% static 'css/style.css' %}" />
-        <style>
-            .impacted {
-                display: grid;
-                gap: 20px 30px;
-                grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            }
-        </style>
-    </head>
+    <!-- Magnafic Popup -->
+    <link rel="stylesheet" href="{% static 'css/magnific-popup.min.css' %}" />
 
-    <body>
-        <!-- Header -->
-        <header id="pq-header" class="pq-header-style-1 pq-has-sticky">
-            <div class="pq-bottom-header">
-                <div class="container-fluid">
-                    <nav class="navbar navbar-expand-lg navbar-light">
-                        <div class="pq-header-logo">
-                            <a
-                                class="navbar-brand logo-wrapper"
-                                href="{% url 'index' %}"
-                            >
-                                <img
-                                    class="img-fluid logo"
-                                    src="{% static 'image/noma.jpeg' %}"
-                                />
-                                <span>Noma Produce Marketing Company</span>
-                            </a>
+    <!-- Font Link -->
+    <link rel="stylesheet" href="{% static 'font/flaticons_1/flaticon_agriculture.css' %}" />
+    <link rel="stylesheet" href="{% static 'font/flaticons_2/flaticon_mycollection.css' %}" />
+    <link rel="stylesheet" href="{% static 'font/ionicons/ionicons.min.css' %}" />
+    <link rel="stylesheet" href="{% static 'font/themify-icons/themify-icons.css' %}" />
+    <link rel="stylesheet" href="{% static 'font/font-awesome/css/all.min.css' %}" />
+
+    <!-- Style -->
+    <link rel="stylesheet" href="{% static 'css/style.css' %}" />
+    <style>
+        .impacted {
+            display: grid;
+            gap: 20px 30px;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Header -->
+    <header id="pq-header" class="pq-header-style-1 pq-has-sticky">
+        <div class="pq-bottom-header">
+            <div class="container-fluid">
+                <nav class="navbar navbar-expand-lg navbar-light">
+                    <div class="pq-header-logo">
+                        <a class="navbar-brand logo-wrapper" href="{% url 'index' %}">
+                            <img class="img-fluid logo" src="{% static 'image/noma.jpeg' %}" />
+                            <span>Noma Produce Marketing Company</span>
+                        </a>
+                    </div>
+
+                    <div class="collapse navbar-collapse" id="navbarNavDropdown">
+                        <div class="pq-menu-contain">
+                            <ul class="pq-main-menu">
+                                <li class="menu-item current-menu-item">
+                                    <a href="{% url 'index' %}">home</a>
+                                </li>
+                                <li class="menu-item">
+                                    <a href="{% url 'about_us' %}">about us</a>
+                                    <i class="fa fa-chevron-down pq-submenu-icon"></i>
+
+                                    <ul class="sub-menu">
+                                        <li class="menu-item">
+                                            <a href="{% url 'about_us' %}#mission-and-vision">Mission & Vision</a>
+                                        </li>
+                                        <li class="menu-item">
+                                            <a href="{% url 'about_us' %}#our-goals">Our Goals</a>
+                                        </li>
+                                        <li class="menu-item">
+                                            <a href="{% url 'team' %}">Our Team</a>
+                                        </li>
+                                        <li class="menu-item">
+                                            <a href="{% url 'contact_us' %}">Join The Family</a>
+                                        </li>
+                                    </ul>
+                                </li>
+
+                                <li class="menu-item">
+                                    <a href="{% url 'our_work' %}">Our Work</a>
+                                    <i class="fa fa-chevron-down pq-submenu-icon"></i>
+
+                                    <ul class="sub-menu">
+                                        <li class="menu-item">
+                                            <a href="{% url 'our_work' %}#how-we-drive-transformation">How We Drive
+                                                Transformation</a>
+                                        </li>
+                                        <li class="menu-item">
+                                            <a href="{% url 'places_impacted' %}">Places Impacted</a>
+                                        </li>
+                                        <li class="menu-item">
+                                            <a href="{% url 'iap' %}">Innovative Agricultural
+                                                Practices</a>
+                                        </li>
+                                        <li class="menu-item">
+                                            <a href="{% url 'gallery' %}">Gallery</a>
+                                        </li>
+                                    </ul>
+                                </li>
+
+                                <li class="menu-item">
+                                    <a href="{% url 'coming_soon' %}">Market Hub</a>
+                                    <i class="fa fa-chevron-down pq-submenu-icon"></i>
+
+                                    <ul class="sub-menu">
+                                        <li class="menu-item">
+                                            <a href="{% url 'coming_soon' %}">Hub</a>
+                                        </li>
+                                        <li class="menu-item">
+                                            <a href="{% url 'coming_soon' %}">Support</a>
+                                        </li>
+                                    </ul>
+                                </li>
+
+                                <li class="menu-item">
+                                    <a href="{% url 'contact_us' %}">contact us</a>
+                                </li>
+                            </ul>
                         </div>
+                    </div>
 
-                        <div
-                            class="collapse navbar-collapse"
-                            id="navbarNavDropdown"
-                        >
-                            <div class="pq-menu-contain">
-                                <ul class="pq-main-menu">
-                                    <li class="menu-item current-menu-item">
-                                        <a href="{% url 'index' %}">home</a>
-                                    </li>
-                                    <li class="menu-item">
-                                        <a href="{% url 'about_us' %}"
-                                            >about us</a
-                                        >
-                                        <i
-                                            class="fa fa-chevron-down pq-submenu-icon"
-                                        ></i>
-
-                                        <ul class="sub-menu">
-                                            <li class="menu-item">
-                                                <a
-                                                    href="{% url 'about_us' %}#mission-and-vision"
-                                                    >Mission & Vision</a
-                                                >
-                                            </li>
-                                            <li class="menu-item">
-                                                <a
-                                                    href="{% url 'about_us' %}#our-goals"
-                                                    >Our Goals</a
-                                                >
-                                            </li>
-                                            <li class="menu-item">
-                                                <a href="{% url 'team' %}"
-                                                    >Our Team</a
-                                                >
-                                            </li>
-                                            <li class="menu-item">
-                                                <a href="{% url 'contact_us' %}"
-                                                    >Join The Family</a
-                                                >
-                                            </li>
-                                        </ul>
-                                    </li>
-
-                                    <li class="menu-item">
-                                        <a href="{% url 'our_work' %}"
-                                            >Our Work</a
-                                        >
-                                        <i
-                                            class="fa fa-chevron-down pq-submenu-icon"
-                                        ></i>
-
-                                        <ul class="sub-menu">
-                                            <li class="menu-item">
-                                                <a
-                                                    href="{% url 'our_work' %}#how-we-drive-transformation"
-                                                    >How We Drive
-                                                    Transformation</a
-                                                >
-                                            </li>
-                                            <li class="menu-item">
-                                                <a
-                                                    href="{% url 'places_impacted' %}"
-                                                    >Places Impacted</a
-                                                >
-                                            </li>
-                                            <li class="menu-item">
-                                                <a href="{% url 'iap' %}"
-                                                    >Innovative Agricultural
-                                                    Practices</a
-                                                >
-                                            </li>
-                                            <li class="menu-item">
-                                                <a href="{% url 'gallery' %}"
-                                                    >Gallery</a
-                                                >
-                                            </li>
-                                        </ul>
-                                    </li>
-
-                                    <li class="menu-item">
-                                        <a href="{% url 'coming_soon' %}"
-                                            >Market Hub</a
-                                        >
-                                        <i
-                                            class="fa fa-chevron-down pq-submenu-icon"
-                                        ></i>
-
-                                        <ul class="sub-menu">
-                                            <li class="menu-item">
-                                                <a
-                                                    href="{% url 'coming_soon' %}"
-                                                    >Hub</a
-                                                >
-                                            </li>
-                                            <li class="menu-item">
-                                                <a
-                                                    href="{% url 'coming_soon' %}"
-                                                    >Support</a
-                                                >
-                                            </li>
-                                        </ul>
-                                    </li>
-
-                                    <li class="menu-item">
-                                        <a href="{% url 'contact_us' %}"
-                                            >contact us</a
-                                        >
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-
-                        <div class="pq-header-right">
-                            <div class="pq-header-icon">
-                                <!-- <div class="pq-header-contact">
+                    <div class="pq-header-right">
+                        <div class="pq-header-icon">
+                            <!-- <div class="pq-header-contact">
                                 <a href="tel:+234 8035732567">
                                     <div class="pq-icon">
                                         <i class="flaticon-phone-call"></i>
@@ -207,161 +141,78 @@
                                     <span>+234 8035732567</span>
                                 </a>
                             </div> -->
-                                <div class="pq-btn-container">
-                                    <a
-                                        href="{% url 'contact_us' %}"
-                                        class="pq-button pq-button-flat"
-                                    >
-                                        <span class="pq-button-text"
-                                            >GET IN TOUCH</span
-                                        >
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-
-                        <button
-                            class="navbar-toggler"
-                            type="button"
-                            data-bs-toggle="collapse"
-                            data-bs-target="#navbarNavDropdown"
-                            aria-controls="navbarNavDropdown"
-                            aria-expanded="false"
-                            aria-label="Toggle navigation"
-                        >
-                            <i class="fas fa-bars"></i>
-                        </button>
-                    </nav>
-                </div>
-            </div>
-        </header>
-
-        {% block content %} {% endblock content %}
-
-        <footer id="pq-footer">
-            <div class="pq-footer-style-1">
-                <div class="pq-footer-top">
-                    <div class="container">
-                        <div class="pq-footer-top-widget">
-                            <div class="pq-footer-column-1">
-                                <div class="widget">
-                                    <h2 class="pq-footer-title">
-                                        Get in Touch with Our Team for Expert
-                                        Agricultural<span>
-                                            Support and Solutions
-                                        </span>
-                                    </h2>
-                                </div>
-                            </div>
-                            <div class="pq-footer-column-2">
-                                <div class="widget">
-                                    <div class="pq-popup-animation pq-style-1">
-                                        <div class="pq-popup-inner">
-                                            <div class="pq-popup-content">
-                                                <a
-                                                    href="{% url 'contact_us' %}"
-                                                >
-                                                    <i
-                                                        class="ti-arrow-top-right"
-                                                    ></i>
-                                                </a>
-                                            </div>
-                                            <img
-                                                src="{% static 'image/popup/popup-animation.png' %}"
-                                                alt="pop-image"
-                                            />
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="pq-footer-column-3">
-                                <h1>NOMA</h1>
-                                <!-- <img src="image/logo/logo2.png" class="pq-footer-logo" alt="agritex-footer-logo"> -->
-                            </div>
-                            <div class="pq-footer-column-4">
-                                <div class="widget">
-                                    <div class="menu-footer-container">
-                                        <ul id="menu-footer" class="menu">
-                                            <li class="menu-item">
-                                                <a
-                                                    href="{% url 'index' %}"
-                                                    aria-current="page"
-                                                    >Home</a
-                                                >
-                                            </li>
-                                            <li class="menu-item">
-                                                <a href="{% url 'about_us' %}"
-                                                    >About Us</a
-                                                >
-                                            </li>
-                                            <li class="menu-item">
-                                                <a href="{% url 'our_work' %}"
-                                                    >Our Work</a
-                                                >
-                                            </li>
-
-                                            <li class="menu-item">
-                                                <a
-                                                    href="{% url 'coming_soon' %}"
-                                                    >Market Hub</a
-                                                >
-                                            </li>
-                                            <li class="menu-item">
-                                                <a href="{% url 'contact_us' %}"
-                                                    >Contact Us</a
-                                                >
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </div>
+                            <div class="pq-btn-container">
+                                <a href="{% url 'contact_us' %}" class="pq-button pq-button-flat">
+                                    <span class="pq-button-text">GET IN TOUCH</span>
+                                </a>
                             </div>
                         </div>
                     </div>
-                </div>
-                <div class="pq-copyright-footer">
-                    <div class="container">
-                        <div class="row">
-                            <div class="col-lg-8">
-                                <span class="pq-copyright">
-                                    <p>
-                                        Copyright 2025 by
-                                        <a href="{% url 'index' %}">
-                                            NOMA - Produce Marketing Company</a
-                                        >
-                                        | All Rights Reserved
-                                    </p>
-                                </span>
-                            </div>
 
-                            <div class="col-lg-4">
-                                <div class="pq-footer-social">
-                                    <span>Follow Us : </span>
-                                    <ul>
-                                        <li>
-                                            <a href="#">
-                                                <i
-                                                    class="fab fa-facebook-f"
-                                                ></i>
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false"
+                        aria-label="Toggle navigation">
+                        <i class="fas fa-bars"></i>
+                    </button>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    {% block content %} {% endblock content %}
+
+    <footer id="pq-footer">
+        <div class="pq-footer-style-1">
+            <div class="pq-footer-top">
+                <div class="container">
+                    <div class="pq-footer-top-widget">
+                        <div class="pq-footer-column-1">
+                            <div class="widget">
+                                <h2 class="pq-footer-title">
+                                    Get in Touch with Our Team for Expert
+                                    Agricultural<span>
+                                        Support and Solutions
+                                    </span>
+                                </h2>
+                            </div>
+                        </div>
+                        <div class="pq-footer-column-2">
+                            <div class="widget">
+                                <div class="pq-popup-animation pq-style-1">
+                                    <div class="pq-popup-inner">
+                                        <div class="pq-popup-content">
+                                            <a href="{% url 'contact_us' %}">
+                                                <i class="ti-arrow-top-right"></i>
                                             </a>
+                                        </div>
+                                        <img src="{% static 'image/popup/popup-animation.png' %}" alt="pop-image" />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="pq-footer-column-3">
+                            <h1>NOMA</h1>
+                            <!-- <img src="image/logo/logo2.png" class="pq-footer-logo" alt="agritex-footer-logo"> -->
+                        </div>
+                        <div class="pq-footer-column-4">
+                            <div class="widget">
+                                <div class="menu-footer-container">
+                                    <ul id="menu-footer" class="menu">
+                                        <li class="menu-item">
+                                            <a href="{% url 'index' %}" aria-current="page">Home</a>
                                         </li>
-                                        <li>
-                                            <a href="#">
-                                                <i
-                                                    class="fab fa-google-plus-g"
-                                                ></i>
-                                            </a>
+                                        <li class="menu-item">
+                                            <a href="{% url 'about_us' %}">About Us</a>
                                         </li>
-                                        <li>
-                                            <a href="#">
-                                                <i class="fab fa-youtube"></i>
-                                            </a>
+                                        <li class="menu-item">
+                                            <a href="{% url 'our_work' %}">Our Work</a>
                                         </li>
-                                        <li>
-                                            <a href="http://linedin/">
-                                                <i
-                                                    class="fab fa-linkedin-in"
-                                                ></i>
-                                            </a>
+
+                                        <li class="menu-item">
+                                            <a href="{% url 'coming_soon' %}">Market Hub</a>
+                                        </li>
+                                        <li class="menu-item">
+                                            <a href="{% url 'contact_us' %}">Contact Us</a>
                                         </li>
                                     </ul>
                                 </div>
@@ -370,40 +221,86 @@
                     </div>
                 </div>
             </div>
-        </footer>
-        <!-- jquery js -->
-        <script src="{% static 'js/jquery-3.7.1.js' %}"></script>
+            <div class="pq-copyright-footer">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-8">
+                            <span class="pq-copyright">
+                                <p>
+                                    Copyright 2025 by
+                                    <a href="{% url 'index' %}">
+                                        NOMA - Produce Marketing Company</a>
+                                    | All Rights Reserved
+                                </p>
+                            </span>
+                        </div>
 
-        <!-- bootstrap js -->
-        <script src="{% static 'js/bootstrap.min.js' %}"></script>
+                        <div class="col-lg-4">
+                            <div class="pq-footer-social">
+                                <span>Follow Us : </span>
+                                <ul>
+                                    <li>
+                                        <a href="#">
+                                            <i class="fab fa-facebook-f"></i>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#">
+                                            <i class="fab fa-google-plus-g"></i>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#">
+                                            <i class="fab fa-youtube"></i>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="http://linedin/">
+                                            <i class="fab fa-linkedin-in"></i>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- jquery js -->
+    <script src="{% static 'js/jquery-3.7.1.js' %}"></script>
 
-        <!-- rev slider -->
-        <script src="{% static 'js/rev-custom.js' %}"></script>
-        <script src="{% static 'rev/js/rs6.min.js' %}"></script>
-        <script src="{% static 'rev/js/rbtools.min.js' %}"></script>
+    <!-- bootstrap js -->
+    <script src="{% static 'js/bootstrap.min.js' %}"></script>
 
-        <!-- gsap js -->
-        <script src="{% static 'js/gsap.min.js' %}"></script>
+    <!-- rev slider -->
+    <script src="{% static 'js/rev-custom.js' %}"></script>
+    <script src="{% static 'rev/js/rs6.min.js' %}"></script>
+    <script src="{% static 'rev/js/rbtools.min.js' %}"></script>
 
-        <!-- scrolltrigger js -->
-        <script src="{% static 'js/ScrollTrigger.min.js' %}"></script>
+    <!-- gsap js -->
+    <script src="{% static 'js/gsap.min.js' %}"></script>
 
-        <!-- Magnafic Popup js -->
-        <script src="{% static 'js/jquery.magnific-popup.min.js' %}"></script>
+    <!-- scrolltrigger js -->
+    <script src="{% static 'js/ScrollTrigger.min.js' %}"></script>
 
-        <!-- Owl js -->
-        <script src="{% static 'js/owl.carousel.js' %}"></script>
+    <!-- Magnafic Popup js -->
+    <script src="{% static 'js/jquery.magnific-popup.min.js' %}"></script>
 
-        <!-- isotope js -->
-        <script src="{% static 'js/isotope.pkgd.min.js' %}"></script>
+    <!-- Owl js -->
+    <script src="{% static 'js/owl.carousel.js' %}"></script>
 
-        <!-- load more js -->
-        <script src="{% static 'js/load-more.js' %}"></script>
+    <!-- isotope js -->
+    <script src="{% static 'js/isotope.pkgd.min.js' %}"></script>
 
-        <!-- WOW -->
-        <script src="{% static 'js/wow.min.js' %}"></script>
+    <!-- load more js -->
+    <script src="{% static 'js/load-more.js' %}"></script>
 
-        <!-- custom js -->
-        <script src="{% static 'js/custom.js' %}"></script>
-    </body>
+    <!-- WOW -->
+    <script src="{% static 'js/wow.min.js' %}"></script>
+
+    <!-- custom js -->
+    <script src="{% static 'js/custom.js' %}"></script>
+</body>
+
 </html>

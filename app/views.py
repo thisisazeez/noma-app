@@ -89,3 +89,22 @@ def iap_view(request):
 def places_impacted(request):
     states = State.objects.prefetch_related("local_governments__places_impacted").all()
     return render(request, "places-impacted.html", {"states": states})
+
+
+def robots_txt(request):
+    """
+    Serve robots.txt file for search engine crawlers.
+    """
+    from django.http import HttpResponse
+    
+    content = """User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: https://nomanigeria.com/sitemap.xml
+
+# Crawl-delay
+Crawl-delay: 1
+"""
+    return HttpResponse(content, content_type="text/plain")
+

@@ -1,6 +1,13 @@
 {% extends 'base.html' %}
 {% load static %}
-{% block title %}About Us - Noma - Produce Marketing Company{% endblock %}
+{% block title %}Gallery - Noma | Our Agricultural Impact in Pictures{% endblock %}
+
+{% block seo_description %}View our gallery showcasing Noma's agricultural impact across Nigeria. See our farmers,
+projects, and transformation efforts in action.{% endblock %}
+
+{% block seo_keywords %}Noma gallery, agricultural photos Nigeria, farming projects, farmer success stories,
+agricultural impact{% endblock %}
+
 {% block content %}
 
 <br>
@@ -14,22 +21,21 @@
           <div class="pq-portfolio-img" style="height: 300px; overflow: hidden;">
             {% comment %}
             Detect file type: if the file ends with a video extension, show a <video>,
-            otherwise show an <img>
-            {% endcomment %}
-            {% if item.is_video %}
+              otherwise show an <img>
+              {% endcomment %}
+              {% if item.is_video %}
               <a href="{{ item.file.url }}" target="_blank">
-                <video controls class="img-fluid"
-                       style="height: 100%; width: 100%; object-fit: cover;">
+                <video controls class="img-fluid" style="height: 100%; width: 100%; object-fit: cover;">
                   <source src="{{ item.file.url }}" type="video/mp4">
                   Your browser doesn't support video.
                 </video>
               </a>
-            {% else %}
+              {% else %}
               <a href="{{ item.file.url }}" target="_blank">
                 <img src="{{ item.file.url }}" alt="{{ item.title }}" class="img-fluid"
-                     style="height: 100%; width: 100%; object-fit: cover;">
+                  style="height: 100%; width: 100%; object-fit: cover;">
               </a>
-            {% endif %}
+              {% endif %}
           </div>
         </div>
       </div>
@@ -40,6 +46,5 @@
     </div>
   </div>
 </section>
-
 
 {% endblock content %}

@@ -1,141 +1,161 @@
 {% extends 'base.html' %}
 {% load static %}
-{% block title %}About Us - Noma - Produce Marketing Company{% endblock %}
+{% block title %}About Us - Noma | Our Mission, Vision & Values{% endblock %}
+
+{% block seo_description %}Learn about Noma's mission to empower Nigerian smallholder farmers through structured
+outgrower schemes, innovative practices, and sustainable agricultural development.{% endblock %}
+
+{% block seo_keywords %}about Noma, Noma mission, Noma vision, Nigerian agriculture company, agricultural development
+Nigeria, SDG goals, food security, gender equality{% endblock %}
+
 {% block content %}
 <br>
 
-    <!-- About us -->
-    <section class="our-about overflow-hidden">
-        <div class="container">
-            <div class="row flex-column-reverse flex-xl-row">
-                <div class="col-xl-6 pe-xl-4 mt-5 mt-xl-0 wow fadeInUp">
-                    <div class="pq-about-media">
-                        <div class="row">
-                            <div class="col-md-6">
-                                <div class="pq-image-border pq-ms-15">
-                                    <img class="pq-image-1" src="{% static 'image/noma/WhatsApp Image 2025-08-04 at 12.32.21_3eba1f0c.jpg' %}" alt="about-image">
-                                </div>
-                            </div>
-                            <div class="col-md-6 mt-4 mt-md-0">
-                                <img class="pq-image-2" src="{% static 'image/noma/WhatsApp Image 2025-08-04 at 12.26.14_3c8c77cb.jpg' %}" alt="about-image">
+<!-- About us -->
+<section class="our-about overflow-hidden">
+    <div class="container">
+        <div class="row flex-column-reverse flex-xl-row">
+            <div class="col-xl-6 pe-xl-4 mt-5 mt-xl-0 wow fadeInUp">
+                <div class="pq-about-media">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="pq-image-border pq-ms-15">
+                                <img class="pq-image-1"
+                                    src="{% static 'image/noma/WhatsApp Image 2025-08-04 at 12.32.21_3eba1f0c.jpg' %}"
+                                    alt="about-image">
                             </div>
                         </div>
-                    </div>
-                </div>
-
-                <img class="pq-1-bg-image" src="{% static 'image/service/services-bottom-image.png' %}" alt="service-image">
-                <div class="col-xl-6 ps-xl-5 wow fadeInRight">
-                    <div class="pq-section-title pe-lg-5 mb-0">
-                        <div class="pq-title">
-                            <div class="pq-title-sub-title">
-                                <img src="{% static 'image/section-image/group_1727.png' %}" alt="image">
-                                <span>About Noma</span>
-                            </div>
-
-                            <p class="pq-title-description">{{ about.description }}</p>
-                            <p>
-                        </div>
-                </div>
-
-                <img class="pq-2-bg-image pq-left" src="{% static 'image/service/about-bottom-image-1.png' %}" alt="service-image">
-            </div>
-        </div>
-    </section>
-
-    <section class="our-about overflow-hidden" id="mission-and-vision">
-        <div class="container">
-            <div class="row flex-column-reverse flex-xl-row">
-                <div class="col-xl-6 pe-xl-4 mt-5 mt-xl-0 wow fadeInUp">
-                    <div class="pq-section-title pe-lg-5 mb-0">
-                        <div class="pq-title">
-                            <div class="pq-title-sub-title">
-                                <img src="{% static 'image/section-image/group_1727.png' %}" alt="image">
-                            </div>
-                            <h5 class="pq-title-hadding">Vision</h5>
-                            <p class="pq-title-description">
-                               To become a leading agribusiness enterprise in Nigeria for all stakeholders, driving sustainable agricultural development, food and nutrition security, and profitability.
-                            </p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-xl-6 ps-xl-5 wow fadeInRight">
-                    <div class="pq-section-title pe-lg-5 mb-0">
-                        <div class="pq-title">
-                            <div class="pq-title-sub-title">
-                                <img src="{% static 'image/section-image/group_1727.png' %}" alt="image">
-                            </div>
-                            <h5 class="pq-title-hadding">Mission</h5>
-                            <p class="pq-title-description">
-                                To empower smallholder farmers through structured out-grower schemes, optimize direct farming operations,
-                                and expand farming production for year-round high-value crop cultivation.
-                            </p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-xl-6 ps-xl-5 wow fadeInRight">
-                    <div class="pq-section-title pe-lg-5 mb-0">
-                        <div class="pq-title">
-                            <div class="pq-title-sub-title">
-                                <img src="{% static 'image/section-image/group_1727.png' %}" alt="image">
-                            </div>
-                            <h5 class="pq-title-hadding">Values</h5>
-                            <p class="pq-title-description">
-                           Integrity, Innovation, Sustainability, and Community Partnership - the core values that guide our agricultural excellence and commitment to
-                           transforming Nigeria's farming landscape.
-                            </p>
+                        <div class="col-md-6 mt-4 mt-md-0">
+                            <img class="pq-image-2"
+                                src="{% static 'image/noma/WhatsApp Image 2025-08-04 at 12.26.14_3c8c77cb.jpg' %}"
+                                alt="about-image">
                         </div>
                     </div>
                 </div>
             </div>
+
+            <img class="pq-1-bg-image" src="{% static 'image/service/services-bottom-image.png' %}" alt="service-image">
+            <div class="col-xl-6 ps-xl-5 wow fadeInRight">
+                <div class="pq-section-title pe-lg-5 mb-0">
+                    <div class="pq-title">
+                        <div class="pq-title-sub-title">
+                            <img src="{% static 'image/section-image/group_1727.png' %}" alt="image">
+                            <span>About Noma</span>
+                        </div>
+
+                        <p class="pq-title-description">{{ about.description }}</p>
+                        <p>
+                    </div>
+                </div>
+
+                <img class="pq-2-bg-image pq-left" src="{% static 'image/service/about-bottom-image-1.png' %}"
+                    alt="service-image">
+            </div>
         </div>
-    </section>
+</section>
+
+<section class="our-about overflow-hidden" id="mission-and-vision">
+    <div class="container">
+        <div class="row flex-column-reverse flex-xl-row">
+            <div class="col-xl-6 pe-xl-4 mt-5 mt-xl-0 wow fadeInUp">
+                <div class="pq-section-title pe-lg-5 mb-0">
+                    <div class="pq-title">
+                        <div class="pq-title-sub-title">
+                            <img src="{% static 'image/section-image/group_1727.png' %}" alt="image">
+                        </div>
+                        <h5 class="pq-title-hadding">Vision</h5>
+                        <p class="pq-title-description">
+                            To become a leading agribusiness enterprise in Nigeria for all stakeholders, driving
+                            sustainable agricultural development, food and nutrition security, and profitability.
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-6 ps-xl-5 wow fadeInRight">
+                <div class="pq-section-title pe-lg-5 mb-0">
+                    <div class="pq-title">
+                        <div class="pq-title-sub-title">
+                            <img src="{% static 'image/section-image/group_1727.png' %}" alt="image">
+                        </div>
+                        <h5 class="pq-title-hadding">Mission</h5>
+                        <p class="pq-title-description">
+                            To empower smallholder farmers through structured out-grower schemes, optimize direct
+                            farming operations,
+                            and expand farming production for year-round high-value crop cultivation.
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-6 ps-xl-5 wow fadeInRight">
+                <div class="pq-section-title pe-lg-5 mb-0">
+                    <div class="pq-title">
+                        <div class="pq-title-sub-title">
+                            <img src="{% static 'image/section-image/group_1727.png' %}" alt="image">
+                        </div>
+                        <h5 class="pq-title-hadding">Values</h5>
+                        <p class="pq-title-description">
+                            Integrity, Innovation, Sustainability, and Community Partnership - the core values that
+                            guide our agricultural excellence and commitment to
+                            transforming Nigeria's farming landscape.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
 
 
-    <section class="blog" id="our-goals">
-        <div class="container">
-            <div class="row">
+<section class="blog" id="our-goals">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="pq-section-title text-center wow fadeInUp">
+                    <div class="pq-title">
+                        <div class="pq-title-sub-title justify-content-center">
+                            <img src="{% static 'image/section-image/group_1727.png' %}" alt="image">
+                            <!-- <span>What we do</span> -->
+                        </div>
+                        <h5 class="pq-title-hadding">Our Goals</h5>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="pq-hover-active wow fadeInUp">
                 <div class="col-lg-12">
-                    <div class="pq-section-title text-center wow fadeInUp">
-                        <div class="pq-title">
-                            <div class="pq-title-sub-title justify-content-center">
-                                <img src="{% static 'image/section-image/group_1727.png' %}" alt="image">
-                                <!-- <span>What we do</span> -->
-                            </div>
-                            <h5 class="pq-title-hadding">Our Goals</h5>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="row">
-                <div class="pq-hover-active wow fadeInUp">
-                    <div class="col-lg-12">
-                        <div class="pq-blog-post pq-list pq-style-1 pq-hover-item pq-active">
-                            <!-- <div class="pq-post-media">
+                    <div class="pq-blog-post pq-list pq-style-1 pq-hover-item pq-active">
+                        <!-- <div class="pq-post-media">
                                 <img src="image/noma/IMG-20250619-WA0011.jpg" alt="blog-image" />
                             </div> -->
-                            <div class="pq-post-meta">
-                                <div class="pq-post-date">
-                                    <a href="#">
-                                        <span class='pq-post-blk'>01</span></a>
-                                </div>
+                        <div class="pq-post-meta">
+                            <div class="pq-post-date">
+                                <a href="#">
+                                    <span class='pq-post-blk'>01</span></a>
                             </div>
+                        </div>
 
-                            <div class="pq-blog-contain">
-                                <div class="pq-post-category">
-                                    <!-- <a href="#">
+                        <div class="pq-blog-contain">
+                            <div class="pq-post-category">
+                                <!-- <a href="#">
                                         <i class="fa fa-tag"></i>
                                         Kano
                                     </a> -->
-                                </div>
-                                <h5 class="pq-blog-title"><a href="#">No Poverty (SDG 1)</a></h5>
-                                <p class="pq-blog-description mt-2">
-                             To achieve the goal of eradicating poverty, our approach focuses on empowering smallholder farmers by providing them with essential agricultural inputs and a range of support services. By mobilizing resources
-                             and facilitating the implementation of strategic policies, we enable these farmers to increase their productivity and build sustainable sources of income. This empowerment not only helps individuals and families
-                             create wealth but also contributes to the broader effort to eliminate poverty in our communities. </p>
                             </div>
+                            <h5 class="pq-blog-title"><a href="#">No Poverty (SDG 1)</a></h5>
+                            <p class="pq-blog-description mt-2">
+                                To achieve the goal of eradicating poverty, our approach focuses on empowering
+                                smallholder farmers by providing them with essential agricultural inputs and a range of
+                                support services. By mobilizing resources
+                                and facilitating the implementation of strategic policies, we enable these farmers to
+                                increase their productivity and build sustainable sources of income. This empowerment
+                                not only helps individuals and families
+                                create wealth but also contributes to the broader effort to eliminate poverty in our
+                                communities. </p>
+                        </div>
 
-                            <!-- <div class="pq-btn-container">
+                        <!-- <div class="pq-btn-container">
                                 <a class="pq-button pq-button-link" href="#">
                                     <div class="pq-button-block">
                                         <span class="pq-icon">
@@ -144,35 +164,39 @@
                                     </div>
                                 </a>
                             </div> -->
-                        </div>
+                    </div>
 
-                        <div class="pq-blog-post pq-list pq-style-1 pq-hover-item">
-                            <!-- <div class="pq-post-media">
+                    <div class="pq-blog-post pq-list pq-style-1 pq-hover-item">
+                        <!-- <div class="pq-post-media">
                                 <img src="image/noma/IMG-20250619-WA0010.jpg" alt="image" />
                             </div> -->
-                            <div class="pq-post-meta">
-                                <div class="pq-post-date">
-                                    <a href="#">
-                                        <span class='pq-post-blk'>02</span></a>
-                                </div>
+                        <div class="pq-post-meta">
+                            <div class="pq-post-date">
+                                <a href="#">
+                                    <span class='pq-post-blk'>02</span></a>
                             </div>
+                        </div>
 
-                            <div class="pq-blog-contain">
-                                <div class="pq-post-category">
-                                    <!-- <a href="#">
+                        <div class="pq-blog-contain">
+                            <div class="pq-post-category">
+                                <!-- <a href="#">
                                         <i class="fa fa-tag"></i>
 
                                         Adamawa
                                     </a> -->
-                                </div>
-                                <h5 class="pq-blog-title"><a href="#">Zero Hunger (SDG 2)</a></h5>
-                                <p class="pq-blog-description mt-2">
-                                   Through the provision of essential agricultural inputs and a range of support services, our initiative enables beneficiaries to significantly increase both the productivity and incomes of smallholder food producers. By ensuring access to the resources they need, we help farmers maximize their yields and strengthen their economic stability.
-                                    This approach not only benefits individual farmers but also contributes to the overall development and prosperity of the agricultural sector in Nigeria.
-                                </p>
                             </div>
+                            <h5 class="pq-blog-title"><a href="#">Zero Hunger (SDG 2)</a></h5>
+                            <p class="pq-blog-description mt-2">
+                                Through the provision of essential agricultural inputs and a range of support services,
+                                our initiative enables beneficiaries to significantly increase both the productivity and
+                                incomes of smallholder food producers. By ensuring access to the resources they need, we
+                                help farmers maximize their yields and strengthen their economic stability.
+                                This approach not only benefits individual farmers but also contributes to the overall
+                                development and prosperity of the agricultural sector in Nigeria.
+                            </p>
+                        </div>
 
-                            <!-- <div class="pq-btn-container">
+                        <!-- <div class="pq-btn-container">
                                 <a class="pq-button pq-button-link" href="#">
                                     <div class="pq-button-block">
 
@@ -182,36 +206,42 @@
                                     </div>
                                 </a>
                             </div> -->
-                        </div>
+                    </div>
 
-                        <div class="pq-blog-post pq-list pq-style-1 pq-hover-item">
-                            <!-- <div class="pq-post-media">
+                    <div class="pq-blog-post pq-list pq-style-1 pq-hover-item">
+                        <!-- <div class="pq-post-media">
                                 <img src="image/noma/IMG-20250619-WA0023.jpg" alt="image" />
                             </div> -->
-                            <div class="pq-post-meta">
-                                <div class="pq-post-date">
-                                    <a href="#">
-                                        <span class='pq-post-blk'>03</span> </a>
-                                </div>
+                        <div class="pq-post-meta">
+                            <div class="pq-post-date">
+                                <a href="#">
+                                    <span class='pq-post-blk'>03</span> </a>
                             </div>
+                        </div>
 
-                            <div class="pq-blog-contain">
-                                <div class="pq-post-category">
-                                    <!-- <a href="#">
+                        <div class="pq-blog-contain">
+                            <div class="pq-post-category">
+                                <!-- <a href="#">
                                         <i class="fa fa-tag"></i>
 
                                         Bauchi
                                     </a> -->
-                                </div>
-                                <h5 class="pq-blog-title"><a href="#">Gender Equality (SDG 5)</a></h5>
-                                <p class="pq-blog-description mt-2">
-                                   In providing support to our Program beneficiaries, concerted efforts are made to offer special preferences to women and youths.
-                                    This targeted approach ensures that these groups are prioritized when it comes to accessing agricultural inputs, training
-                                    opportunities, and other essential resources. By focusing on the inclusion of women and young people, the program aims to foster greater gender equality and empower the next generation of farmers.
-                                    These initiatives help women and youths enhance their productivity, improve their economic prospects, and actively participate in transforming the agricultural landscape of Nigeria.</p>
                             </div>
+                            <h5 class="pq-blog-title"><a href="#">Gender Equality (SDG 5)</a></h5>
+                            <p class="pq-blog-description mt-2">
+                                In providing support to our Program beneficiaries, concerted efforts are made to offer
+                                special preferences to women and youths.
+                                This targeted approach ensures that these groups are prioritized when it comes to
+                                accessing agricultural inputs, training
+                                opportunities, and other essential resources. By focusing on the inclusion of women and
+                                young people, the program aims to foster greater gender equality and empower the next
+                                generation of farmers.
+                                These initiatives help women and youths enhance their productivity, improve their
+                                economic prospects, and actively participate in transforming the agricultural landscape
+                                of Nigeria.</p>
+                        </div>
 
-                            <!-- <div class="pq-btn-container">
+                        <!-- <div class="pq-btn-container">
                                 <a class="pq-button pq-button-link" href="#">
                                     <div class="pq-button-block">
                                         <span class="pq-icon">
@@ -220,40 +250,46 @@
                                     </div>
                                 </a>
                             </div> -->
-                        </div>
+                    </div>
 
-                        <div class="pq-blog-post pq-list pq-style-1 pq-hover-item">
-                            <!-- <div class="pq-post-media">
+                    <div class="pq-blog-post pq-list pq-style-1 pq-hover-item">
+                        <!-- <div class="pq-post-media">
                                 <img src="image/noma/IMG-20250619-WA0023.jpg" alt="image" />
                             </div> -->
-                            <div class="pq-post-meta">
-                                <div class="pq-post-date">
-                                    <a href="#">
-                                        <span class='pq-post-blk'>04</span> </a>
-                                </div>
+                        <div class="pq-post-meta">
+                            <div class="pq-post-date">
+                                <a href="#">
+                                    <span class='pq-post-blk'>04</span> </a>
                             </div>
+                        </div>
 
 
-                            <div class="pq-blog-contain">
-                                <div class="pq-post-category">
-                                    <!-- <a href="#">
+                        <div class="pq-blog-contain">
+                            <div class="pq-post-category">
+                                <!-- <a href="#">
                                         <i class="fa fa-tag"></i>
 
                                         Bauchi
                                     </a> -->
-                                </div>
-                                <h5 class="pq-blog-title"><a href="#">Responsible Consumption & Production (SDG 12)</a></h5>
-                                <p class="pq-blog-description mt-2">
-                                       NOMA utilizes a pay-with-output model to provide Program beneficiaries with access to effective and efficient markets across all intervention locations.
-                                       Through this approach, beneficiaries are assured of guaranteed pricing for their agricultural products, offering them financial stability and predictability.
-                                        In addition, the model includes short-duration storage facilities specifically designed to meet the needs of participating farmers.
-                                       By securing market access and ensuring timely transactions, NOMA’s initiative plays a critical role in helping farmers avoid post-harvest losses.
-                                        This comprehensive support system not only fosters confidence among smallholder farmers but also contributes to the broader goals of sustainable agricultural development and economic empowerment in Nigeria.
-                         </p>
-
                             </div>
+                            <h5 class="pq-blog-title"><a href="#">Responsible Consumption & Production (SDG 12)</a></h5>
+                            <p class="pq-blog-description mt-2">
+                                NOMA utilizes a pay-with-output model to provide Program beneficiaries with access to
+                                effective and efficient markets across all intervention locations.
+                                Through this approach, beneficiaries are assured of guaranteed pricing for their
+                                agricultural products, offering them financial stability and predictability.
+                                In addition, the model includes short-duration storage facilities specifically designed
+                                to meet the needs of participating farmers.
+                                By securing market access and ensuring timely transactions, NOMA’s initiative plays a
+                                critical role in helping farmers avoid post-harvest losses.
+                                This comprehensive support system not only fosters confidence among smallholder farmers
+                                but also contributes to the broader goals of sustainable agricultural development and
+                                economic empowerment in Nigeria.
+                            </p>
 
-                            <!-- <div class="pq-btn-container">
+                        </div>
+
+                        <!-- <div class="pq-btn-container">
                                 <a class="pq-button pq-button-link" href="#">
                                     <div class="pq-button-block">
                                         <span class="pq-icon">
@@ -262,54 +298,54 @@
                                     </div>
                                 </a>
                             </div> -->
-                        </div>
                     </div>
                 </div>
             </div>
         </div>
-    </section>
+    </div>
+</section>
 
-    <br>
-    <!-- cinet -->
-    {% if partners %}
-    <section class="clinet pt-0">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12">
-                    <div class="pq-client-box-slider pq-style-2">
-                        <div class="pq-clint-box-border">
-                            <h3 class="pq-client-box-title"><span>Partners - </span>Our Trusted Partners</h3>
-                        </div>
-                        <div class="owl-carousel owl-loaded owl-drag" data-dots="false" data-nav="false"
-                            data-desk_num="5" data-lap_num="2" data-tab_num="2" data-mob_num="2" data-mob_sm="1"
-                            data-autoplay="false" data-loop="true" data-margin="30">
-                            {% for partner in partners %}
-                            <div class="item">
-                                <div class="pq-client-box pq-style-2">
-                                    <a href="#">
-                                        <img src="{{ partner.logo.url }}" alt="{{ partner.name }}">
-                                    </a>
-                                </div>
+<br>
+<!-- cinet -->
+{% if partners %}
+<section class="clinet pt-0">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="pq-client-box-slider pq-style-2">
+                    <div class="pq-clint-box-border">
+                        <h3 class="pq-client-box-title"><span>Partners - </span>Our Trusted Partners</h3>
+                    </div>
+                    <div class="owl-carousel owl-loaded owl-drag" data-dots="false" data-nav="false" data-desk_num="5"
+                        data-lap_num="2" data-tab_num="2" data-mob_num="2" data-mob_sm="1" data-autoplay="false"
+                        data-loop="true" data-margin="30">
+                        {% for partner in partners %}
+                        <div class="item">
+                            <div class="pq-client-box pq-style-2">
+                                <a href="#">
+                                    <img src="{{ partner.logo.url }}" alt="{{ partner.name }}">
+                                </a>
                             </div>
-                            {% endfor %}
                         </div>
+                        {% endfor %}
                     </div>
                 </div>
             </div>
         </div>
-    </section>
-    {% endif %}
+    </div>
+</section>
+{% endif %}
 
-    <script>
-        // Toggle 'other' service input visibility on About page
-        (function(){
-            var svc = document.getElementById('service');
-            var other = document.getElementById('service-other');
-            if (!svc || !other) return;
-            svc.addEventListener('change', function(){
-                if (svc.value === 'other') { other.style.display = 'block'; other.focus(); }
-                else { other.style.display = 'none'; other.value = ''; }
-            });
-        })();
-    </script>
+<script>
+    // Toggle 'other' service input visibility on About page
+    (function () {
+        var svc = document.getElementById('service');
+        var other = document.getElementById('service-other');
+        if (!svc || !other) return;
+        svc.addEventListener('change', function () {
+            if (svc.value === 'other') { other.style.display = 'block'; other.focus(); }
+            else { other.style.display = 'none'; other.value = ''; }
+        });
+    })();
+</script>
 {% endblock content %}

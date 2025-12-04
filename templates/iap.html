@@ -1,6 +1,13 @@
 {% extends 'base.html' %}
 {% load static %}
-{% block title %}Innovative Agricultural Practices - Noma - Produce Marketing Company{% endblock %}
+{% block title %}Innovative Agricultural Practices - Noma | Modern Farming Solutions{% endblock %}
+
+{% block seo_description %}Learn about Noma's innovative agricultural practices including semi-mechanized farming,
+precision agriculture, and sustainable crop cultivation methods.{% endblock %}
+
+{% block seo_keywords %}innovative agriculture, modern farming Nigeria, agricultural technology, precision farming,
+sustainable practices, semi-mechanized farming{% endblock %}
+
 {% block content %}
 
 <br>
@@ -24,7 +31,8 @@
         <div class="row">
             <div class="pq-hover-active wow fadeInUp">
                 <div class="col-lg-12">
-                    <div class="pq-blog-post pq-list pq-style-1 pq-hover-item {% if forloop.first %}pq-active{% endif %}">
+                    <div
+                        class="pq-blog-post pq-list pq-style-1 pq-hover-item {% if forloop.first %}pq-active{% endif %}">
                         {% if iap.image %}
                         <div class="pq-post-media">
                             <img src="{{ iap.image.url }}" alt="{{ iap.name }}" class="img-fluid" />

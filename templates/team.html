@@ -1,5 +1,14 @@
-{% extends "base.html" %} {% load static %} {% block title %}Our Team - NOMA
-Farms{% endblock title %} {% block content %}
+{% extends "base.html" %}
+{% load static %}
+{% block title %}Our Team - Noma | Meet the Agricultural Experts{% endblock title %}
+
+{% block seo_description %}Meet the dedicated team behind Noma's agricultural transformation. Our experts are committed
+to empowering Nigerian farmers and driving sustainable growth.{% endblock %}
+
+{% block seo_keywords %}Noma team, agricultural experts Nigeria, Noma leadership, farming professionals, agricultural
+transformation{% endblock %}
+
+{% block content %}
 <style>
     body {
         font-family: Arial, sans-serif;
@@ -7,40 +16,49 @@ Farms{% endblock title %} {% block content %}
         padding: 0;
         background-color: #f8f9fa;
     }
+
     .container {
         max-width: 1200px;
         margin: 0 auto;
         padding: 20px;
     }
+
     .pq-section-title {
         text-align: center;
         margin-bottom: 40px;
     }
+
     .pq-section-title img {
         max-width: 50px;
         margin-bottom: 10px;
     }
+
     .pq-title-hadding {
         font-size: 2.5em;
         color: #333;
     }
+
     .pq-title-hadding span {
         color: #28a745;
     }
+
     .tree {
         list-style: none;
         padding: 0;
         margin: 0;
     }
+
     .tree li {
         margin: 20px 0;
         position: relative;
     }
+
     .tree ul {
         list-style: none;
         padding-left: 40px;
         position: relative;
     }
+
     .tree ul:before {
         content: "";
         position: absolute;
@@ -50,6 +68,7 @@ Farms{% endblock title %} {% block content %}
         width: 2px;
         background: #ccc;
     }
+
     .tree li:before {
         content: "";
         position: absolute;
@@ -59,6 +78,7 @@ Farms{% endblock title %} {% block content %}
         height: 2px;
         background: #ccc;
     }
+
     .pq-team-box {
         text-align: center;
         background: #fff;
@@ -68,6 +88,7 @@ Farms{% endblock title %} {% block content %}
         max-width: 250px;
         margin: 0 auto;
     }
+
     .pq-team-img img {
         width: 220px;
         height: 220px;
@@ -75,16 +96,19 @@ Farms{% endblock title %} {% block content %}
         border-radius: 50%;
         margin-bottom: 15px;
     }
+
     .pq-team-info h5 {
         font-size: 1.5em;
         margin: 0 0 10px;
         color: #333;
     }
+
     .pq-subtitle {
         font-size: 1.1em;
         color: #666;
         margin: 0 0 10px;
     }
+
     .pq-team-info p {
         font-size: 0.9em;
         color: #777;
@@ -100,10 +124,7 @@ Farms{% endblock title %} {% block content %}
                 <div class="pq-section-title text-center wow fadeInUp">
                     <div class="pq-title">
                         <div class="pq-title-sub-title justify-content-center">
-                            <img
-                                src="{% static 'image/section-image/group_1727.png' %}"
-                                alt="image"
-                            />
+                            <img src="{% static 'image/section-image/group_1727.png' %}" alt="image" />
                             <!-- <span>TEAM MEMBER</span> -->
                         </div>
                         <h5 class="pq-title-hadding">
@@ -119,27 +140,19 @@ Farms{% endblock title %} {% block content %}
                         <div class="pq-team-box pq-team-style-1 text-center">
                             <div class="pq-team-img">
                                 {% if member.image %}
-                                <img
-                                    src="{{ member.image.url }}"
-                                    alt="{{ member.name }}"
-                                    style="
+                                <img src="{{ member.image.url }}" alt="{{ member.name }}" style="
                                         width: 220px;
                                         height: 220px;
                                         object-fit: cover;
                                         border-radius: 50%;
-                                    "
-                                />
+                                    " />
                                 {% else %}
-                                <img
-                                    src="{% static 'image/placeholder.png' %}"
-                                    alt="{{ member.name }}"
-                                    style="
+                                <img src="{% static 'image/placeholder.png' %}" alt="{{ member.name }}" style="
                                         width: 220px;
                                         height: 220px;
                                         object-fit: cover;
                                         border-radius: 50%;
-                                    "
-                                />
+                                    " />
                                 {% endif %}
                             </div>
                             <div class="pq-team-info">
